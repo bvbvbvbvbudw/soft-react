@@ -1,0 +1,7 @@
+/*    /index.html   200
+/project/*    /index.html   200
+/backlog/*    /index.html   200
+/backlog/:projectId/*    /index.html   200
+/board/*    /index.html   200
+/profile/*    /index.html   200
+/auth/*    /index.html   200
