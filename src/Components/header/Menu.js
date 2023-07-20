@@ -41,19 +41,19 @@ export default function Menu() {
                         <Nav.Link href='/support' id="basic-nav-dropdown-1">Для пропозицій та ідей</Nav.Link>
                     </Nav>
 
-                <div className="float-right px-3 d-flex gap-3">
-                    {token.length > 30 ? (
-                        <>
-                            <a className={'btn btn-primary'} href="/profile">Мій профіль</a>
-                            <button onClick={handleLogout} className={'btn btn-primary'}>Вийти з аккаунту</button>
-                        </>
-                    ) : (
-                        <>
-                            <a className={'btn btn-primary'} href="/auth">Логін</a>
-                            <a className={'btn btn-primary'} href="/auth">Реєстрація</a>
-                        </>
-                    )}
-                </div>
+                {/*<div className="float-right px-3 d-flex gap-3">*/}
+                {/*    {token.length > 30 ? (*/}
+                {/*        <>*/}
+                {/*            <a className={'btn btn-primary'} href="/profile">Мій профіль</a>*/}
+                {/*            <button onClick={handleLogout} className={'btn btn-primary'}>Вийти з аккаунту</button>*/}
+                {/*        </>*/}
+                {/*    ) : (*/}
+                {/*        <>*/}
+                {/*            <a className={'btn btn-primary'} href="/auth">Логін</a>*/}
+                {/*            <a className={'btn btn-primary'} href="/auth">Реєстрація</a>*/}
+                {/*        </>*/}
+                {/*    )}*/}
+                {/*</div>*/}
             </Navbar>
         </>
     );
