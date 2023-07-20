@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a4246ec1.css",
+    "main.js": "/static/js/main.300ef7e5.js",
+    "static/js/787.ea50bd9a.chunk.js": "/static/js/787.ea50bd9a.chunk.js",
+    "static/media/Carousel_Image_Lists_2x_preview_rev_1.png": "/static/media/Carousel_Image_Lists_2x_preview_rev_1.a0c17e809511aff1d520.png",
+    "static/media/TrelloUICollage_4x.webp": "/static/media/TrelloUICollage_4x.845b652fadf993ce6a92.webp",
+    "static/media/childissue.png": "/static/media/childissue.e3edc5cad6e1fa58bfd2.png",
+    "static/media/share-link.png": "/static/media/share-link.c633f144fee0681a7b72.png",
+    "static/media/roadmapicon.png": "/static/media/roadmapicon.dbb991d7bbdb20855be3.png",
+    "static/media/Logo.png": "/static/media/Logo.2691dd92dfd56084058f.png",
+    "static/media/settings.png": "/static/media/settings.2a7f039b8d902eb97aa2.png",
+    "static/media/wallet.png": "/static/media/wallet.32c50807b9392f769122.png",
+    "static/media/backlogicon.png": "/static/media/backlogicon.e6d27c27e04548a0eb9b.png",
+    "static/media/shortcut.png": "/static/media/shortcut.d8f82c619824823bb442.png",
+    "static/media/bg-welcome.svg": "/static/media/bg-welcome.508c39c54e3dc6a3e35e.svg",
+    "index.html": "/index.html",
+    "main.a4246ec1.css.map": "/static/css/main.a4246ec1.css.map",
+    "main.300ef7e5.js.map": "/static/js/main.300ef7e5.js.map",
+    "787.ea50bd9a.chunk.js.map": "/static/js/787.ea50bd9a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4246ec1.css",
+    "static/js/main.300ef7e5.js"
+  ]
+}
