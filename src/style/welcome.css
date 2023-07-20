@@ -1,0 +1,24 @@
+.wrapper-welcome{
+    background-image: url('../images/bg-welcome.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.container-welcome{
+    display: flex;
+    padding-top: 200px;
+    justify-content: space-between;
+}
+.container-infortmation-welcome h1, .container-infortmation-welcome p{
+    color: white;
+    font-weight: bold;
+}
+.container-welcome-inside{
+    display: block;
+}
+.container-buttons-welcome a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}

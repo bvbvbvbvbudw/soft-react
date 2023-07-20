@@ -1,0 +1,16 @@
+.logo{
+    width: 100px; height: 30px;
+    scale: 0.8;
+}
+.header-container{
+    -webkit-box-shadow: 0px 8px 8px 3px rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: 0px 8px 8px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 8px 8px 3px rgba(0, 0, 0, 0.06);
+}
+.actived{
+    border-bottom: 2px solid #0052cc;
+}
+.actived a{
+    font-weight: bold;
+    color: #0052cc!important;
+}

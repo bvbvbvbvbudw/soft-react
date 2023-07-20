@@ -1,0 +1,68 @@
+.modal-window .modal-content{
+    min-width: 1400px;
+    min-height: 550px;
+}
+.boards {
+    display: flex;
+    flex-wrap: wrap;
+}
+.board {
+
+    display: block;
+    width: 250px;
+    margin-right: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.item {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: move;
+}
+
+.item-dragged-over {
+    border-color: #ff0000;
+}
+
+.board-dragged {
+    background-color: #e6f7ff;
+}
+
+.board-dragged-over {
+    border: 2px dashed #ff0000;
+}
+
+.items {
+    min-height: 30px;
+}
+.board-container {
+    display: flex;
+}
+
+.board {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.item-list {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #e9e9e9;
+}

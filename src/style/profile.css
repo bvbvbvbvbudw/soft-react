@@ -1,0 +1,16 @@
+.wrapper-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.wrapper-container img{
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+}
+.control-avatar{
+    display: flex;
+    flex-direction: column;
+}

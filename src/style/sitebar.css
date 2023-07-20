@@ -1,0 +1,119 @@
+.container-sitebar{
+    width: 300px; height: 100vh;
+    border: 1px solid #e5e5e5;
+    background-color: #fafbfc;
+    display: flex; flex-direction: column;
+    gap: 25px;
+    transition-duration: 1s;
+    position: absolute;
+}
+.current-project{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+.description-and-button{
+    display: flex; gap: 36px;
+}
+.btn-close-sitebar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size:25px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+
+    margin: 30px;
+    -webkit-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+}
+.current-project p{
+    width: 150px;
+    margin-top: -30px;
+    margin-left: 35px;
+    text-align: start;
+}
+.container-sitebar p{
+    padding: 6px;
+}
+.logo-project{
+    width: 30px; height: 30px;
+    margin-top: 5px;
+    margin-bottom: -9px;
+}
+.container-sitebar .active-sitebar{
+    background-color: #e6effc;
+    border: 2px solid #0052cc;
+    color: #0052cc;
+    border-radius: 3px;
+    padding: 6px;
+    margin-left:-10px;
+    width: 96%;
+}
+.current-project,
+.container-planning,
+.container-development,
+.control-button{
+    padding-left: 40px;
+}
+.project-name{font-weight: bold}
+img{
+    width: 30px; height: 30px;
+}
+.title{
+    display: flex;
+    justify-content: flex-start;
+    text-transform: uppercase;
+    font-size:16px!important;
+    font-weight: bold;
+    margin-bottom:-1px!important;
+}
+.role{
+    color: grey;
+}
+.container-planning{
+    text-align:start;
+    font-size:20px;
+    font-weight: 550;
+    display: flex; gap: 25px;
+    flex-direction: column;
+}
+.container-planning a {
+    display: flex; gap: 15px;
+    font-size:20px;
+    margin-top: -10px;
+}
+.container-development {
+    display: flex; flex-direction:column ; gap: 15px;
+    align-items: flex-start;
+}
+.container-development p{
+    display: flex; gap: 10px;
+    margin-top: -10px;
+}
+.container-development span{
+    margin-top: -3px;
+}
+hr{
+    padding-left: 10px;
+    margin-top: -20px;
+}
+.control-button{
+    display: flex;flex-direction: column; gap: 30px;
+    align-items: flex-start;
+}
+.control-button p{
+    display: flex; gap: 15px;
+    margin-top:-20px;
+}
+#shortcut{
+    width: 60px; height: 60px;
+}
+.closed{
+    margin-left: -320px;
+}
