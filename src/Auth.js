@@ -24,7 +24,7 @@ export default function Auth({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
                 password: loginPassword
             };
 
-            axios.post('https://2718425.un507148.web.hosting-test.net/api/login', userData)
+            axios.post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/login', userData)
                 .then(response => {
                     localStorage.setItem('userName', response.data.name)
                     const token = response.data.token;
@@ -53,7 +53,7 @@ export default function Auth({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
                     password: registerPassword,
                 };
 
-                const response = await axios.get('https://2718425.un507148.web.hosting-test.net/api/csrf-cookie');
+                const response = await axios.get('https://bvbvbvbvbudw-001-site1.atempurl.com/api/csrf-cookie');
 
                 if (response.status === 200) {
                     const config = {
@@ -63,7 +63,7 @@ export default function Auth({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
                         }
                     };
 
-                    const registerResponse = await axios.post('https://2718425.un507148.web.hosting-test.net/api/register', userData, config);
+                    const registerResponse = await axios.post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/register', userData, config);
                     console.log(registerResponse.data);
                 }
             } catch (error) {

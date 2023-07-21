@@ -18,7 +18,8 @@ function Project() {
         const fetchData = async () => {
             try {
                 const [projectsResponse, usersResponse] = await Promise.all([
-                    axios.get(`https://2718425.un507148.web.hosting-test.net/api/projects?user_id=${localStorage.getItem('userName')}`),
+                    axios.get(`https://2718425.un507148.web.hosting-test.net/api/projects?user_id=1`),
+                    // axios.get(`https://2718425.un507148.web.hosting-test.net/api/projects?user_id=${localStorage.getItem('userName')}`),
                     axios.get('https://2718425.un507148.web.hosting-test.net/api/users')
                 ]);
                 const projects = projectsResponse.data.response.tasks.data;
@@ -205,5 +206,5 @@ function Project() {
         </Layout>
     );
 }
-
-export default withAuthentication(Project);
+export default Project;
+// export default withAuthentication(Project);
