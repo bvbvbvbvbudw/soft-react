@@ -72,8 +72,8 @@ const BackLogPage = () => {
         const fetchInitialData = async () => {
             try {
                 const [tasksResponse, projectResponse] = await axios.all([
-                    axios.get(`2718425.un507148.web.hosting-test.net/api/currentTask?project_id=${projectId}`),
-                    axios.get(`2718425.un507148.web.hosting-test.net/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
+                    axios.get(`http://2718425.un507148.web.hosting-test.net/api/currentTask?project_id=${projectId}`),
+                    axios.get(`http://2718425.un507148.web.hosting-test.net/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
                 ]);
                 setTasks(tasksResponse.data);
                 setAvatars(projectResponse.data.response.comments.data);
@@ -89,7 +89,7 @@ const BackLogPage = () => {
     }, []);
     useEffect(() => {
         Promise.all(avatars.map(avatar => {
-            return axios.get(`2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar.id}`);
+            return axios.get(`http://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar.id}`);
         }))
             .then(responses => {
                 const avatarsData = responses.map(response => response.data);
@@ -135,14 +135,14 @@ const BackLogPage = () => {
     };
 
     const deleteTaskHandler = (id) => {
-        axios.post(`2718425.un507148.web.hosting-test.net/api/task?deleteId=${id}`)
+        axios.post(`http://2718425.un507148.web.hosting-test.net/api/task?deleteId=${id}`)
             .then(response => {
                 setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
             })
             .catch(error => console.error(error));
     }
     const deleteProjectHandler = (project) => {
-        axios.post(`2718425.un507148.web.hosting-test.net/api/projects?deleteId=${project}`).then(response => navigate('/project'))
+        axios.post(`http://2718425.un507148.web.hosting-test.net/api/projects?deleteId=${project}`).then(response => navigate('/project'))
     }
     const editProjectHandler = () => {
         const nameElement = document.getElementById('currentProject');
@@ -156,7 +156,7 @@ const BackLogPage = () => {
             this.parentNode.replaceChild(nameElement, this);
 
             axios
-                .post(`2718425.un507148.web.hosting-test.net/api/projects?id=${projectId}`, {
+                .post(`http://2718425.un507148.web.hosting-test.net/api/projects?id=${projectId}`, {
                     project: updatedName,
                     creator_id: encodeURIComponent(localStorage.getItem('userName'))
                 })
@@ -173,7 +173,7 @@ const BackLogPage = () => {
 
     const deleteUserHandler = (id) => {
         console.log(id)
-        axios.post(`2718425.un507148.web.hosting-test.net/api/projectadduser?deleteId=${id}&project_id=${projectId}`)
+        axios.post(`http://2718425.un507148.web.hosting-test.net/api/projectadduser?deleteId=${id}&project_id=${projectId}`)
             .then(response =>
                 window.location.reload()
             )
@@ -183,7 +183,7 @@ const BackLogPage = () => {
     }
     const handleChangeTaskInfo = (task, e) => {
         const selectValue = e.target.value;
-        axios.post(`2718425.un507148.web.hosting-test.net/api/task?id=${task.id}`, {
+        axios.post(`http://2718425.un507148.web.hosting-test.net/api/task?id=${task.id}`, {
             name: task.name,
             user_id: task.user_id,
             status_id: selectValue,
@@ -235,7 +235,7 @@ const BackLogPage = () => {
                                     {showAvatars.map(avatar => (
                                         <img
                                             key={avatar.user_id}
-                                            src={`2718425.un507148.web.hosting-test.net/api/storage/${avatar.avatar}`}
+                                            src={`http://2718425.un507148.web.hosting-test.net/api/storage/${avatar.avatar}`}
                                             className="avatar"
                                             alt="Avatar"
                                             title={avatar.user.name}
@@ -288,7 +288,7 @@ const BackLogPage = () => {
                             {tasks.length > 0 ? (
                                 tasks.map((task, index) => {
                                     const taskAvatar = showAvatars.find(avatar => avatar.user_id === task.user_id.toString());
-                                    const avatarSrc = taskAvatar ? `2718425.un507148.web.hosting-test.net/api/storage/${taskAvatar.avatar}` : '';
+                                    const avatarSrc = taskAvatar ? `http://2718425.un507148.web.hosting-test.net/api/storage/${taskAvatar.avatar}` : '';
                                     const hideClass = searchQuery && !task.name.toLowerCase().includes(searchQuery.toLowerCase()) ? 'hide' : '';
 
                                     return (

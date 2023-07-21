@@ -1,17 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
 
 function MyVerticallyCenteredModal(props) {
-    const [addUsers, setAddUser] = useState([]);
-    const [userAvatar, setUserAvatar] = useState();
     const sendRequest = (e) => {
         const inputReq = document.getElementById('response-create-project')
         e.preventDefault()
         console.log(inputReq.value);
         axios
-            .post('2718425.un507148.web.hosting-test.net/api/projects', {
+            .post('http://2718425.un507148.web.hosting-test.net/api/projects', {
                 project: inputReq.value,
                 creator_id: localStorage.getItem('userName')
             })

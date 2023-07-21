@@ -10,18 +10,9 @@ export default function Welcome(){
     <div className="wrapper-welcome">
         <div className="container-welcome">
             <img src={first} alt="" style={{width: '595px' , height:"405px"}}/>
-
             <div className="container-infortmation-welcome">
                 <h1>Jira copy!</h1>
                 <div className="container-welcome-inside">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Accusantium alias enim ipsum laborum modi natus nemo neque quae sed,
-                        velit. Dicta laborum minima odit officia, perferendis quidem reiciendis saepe voluptatibus.
-                    </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Accusantium alias enim ipsum laborum modi natus nemo neque quae sed,
-                        velit. Dicta laborum minima odit officia, perferendis quidem reiciendis saepe voluptatibus.
-                    </p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                         Accusantium alias enim ipsum laborum modi natus nemo neque quae sed,
                         velit. Dicta laborum minima odit officia, perferendis quidem reiciendis saepe voluptatibus.
@@ -32,7 +23,6 @@ export default function Welcome(){
                     </div>
                 </div>
             </div>
-
             <img src={second} alt="" style={{width: '650px' , height: "605px"}}/>
         </div>
     </div>

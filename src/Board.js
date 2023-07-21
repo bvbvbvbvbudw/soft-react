@@ -1,11 +1,8 @@
 import React, {useEffect} from "react";
-import Button from 'react-bootstrap-v5/lib/Button';
-import Modal from 'react-bootstrap-v5/lib/Modal';
 import Layout from "./Layout/Layout";
 import SiteBar from "./Components/header/SiteBar";
 
 import './style/board.css';
-import BoardTable from "./BoardTable";
 import Table from "./Components/Table";
 import withAuthentication from "./withAuthentication";
 

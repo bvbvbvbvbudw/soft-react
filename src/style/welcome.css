@@ -1,24 +1,74 @@
-.wrapper-welcome{
+.wrapper-welcome {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url('../images/bg-welcome.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100vw;
-    height: 100vh;
+    z-index: -1; /* Set a lower z-index to keep it in the background */
 }
-.container-welcome{
+
+.container-welcome {
     display: flex;
-    padding-top: 200px;
-    justify-content: space-between;
+    /* flex-direction: column; */
+    align-items: center;
+    padding-top: 50px; /* Adjust the padding for better alignment */
 }
-.container-infortmation-welcome h1, .container-infortmation-welcome p{
+
+.container-infortmation-welcome {
+    text-align: center; /* Center the text in the container */
+    padding: 20px; /* Add some padding for better spacing */
+}
+
+.container-infortmation-welcome h1,
+.container-infortmation-welcome p {
     color: white;
     font-weight: bold;
+    margin-bottom: 10px; /* Add some space between elements */
 }
-.container-welcome-inside{
-    display: block;
+
+.container-welcome-inside {
+    max-width: 80%; /* Limit the width of the container to 80% */
+    margin: 0 auto; /* Center the container */
 }
-.container-buttons-welcome a{
+
+.container-buttons-welcome {
+    display: flex;
+    flex-wrap: wrap; /* Wrap buttons on smaller screens */
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 10px; /* Add some space between buttons */
+}
+
+.container-buttons-welcome a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+}
+
+/* Adjust the image sizes for smaller screens */
+.img-first,
+.img-second {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Adjust the padding for smaller screens */
+@media screen and (max-width: 767px) {
+    .container-welcome {
+        padding-top: 20px;
+        flex-direction: column;
+    }
+
+    .container-welcome-inside {
+        max-width: 90%;
+    }
+}
+
+/* Add flex-direction: column; for tablet-sized screens */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container-welcome {
+        flex-direction: column;
+    }
 }

@@ -15,7 +15,7 @@ export default function AvatarUpload() {
         formData.append('avatar', selectedFile);
         formData.append('user_id', currentUser);
         axios
-            .post('2718425.un507148.web.hosting-test.net/api/avatar', formData)
+            .post('http://2718425.un507148.web.hosting-test.net/api/avatar', formData)
             .then((response) => {
                 console.log(response);
             })

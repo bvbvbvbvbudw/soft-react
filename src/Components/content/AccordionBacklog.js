@@ -30,7 +30,7 @@ function AlwaysOpenExample() {
     };
     const handleChangeTaskInfo = (task, e) => {
         const selectValue = e.target.value;
-        axios.post(`2718425.un507148.web.hosting-test.net/api/task?id=${task.id}`, {
+        axios.post(`http://2718425.un507148.web.hosting-test.net/api/task?id=${task.id}`, {
             name: task.name,
             user_id: task.user_id,
             status_id: selectValue,
@@ -40,18 +40,18 @@ function AlwaysOpenExample() {
     }
 
     useEffect(() => {
-        axios.get(`2718425.un507148.web.hosting-test.net/api/projects?user_id=${localStorage.getItem('userName')}`)
+        axios.get(`http://2718425.un507148.web.hosting-test.net/api/projects?user_id=${localStorage.getItem('userName')}`)
             .then(response => {
                 setProjects(response.data.response.tasks.data)
             })
-        axios.get(`2718425.un507148.web.hosting-test.net/api/information-task`)
+        axios.get(`http://2718425.un507148.web.hosting-test.net/api/information-task`)
             .then(response => {
                 setCurrentTasks(response.data.response.status.data)
             })
     }, []);
 
     const test = (projectId) => {
-        axios.get(`2718425.un507148.web.hosting-test.net/api/currentTask?project_id=${projectId}`)
+        axios.get(`http://2718425.un507148.web.hosting-test.net/api/currentTask?project_id=${projectId}`)
             .then(response => {
                 const userIds = {};
                 response.data.forEach(item => {
@@ -66,7 +66,7 @@ function AlwaysOpenExample() {
                 }));
 
                 const avatarRequests = Object.keys(userIds).map(avatar => {
-                    return axios.get(`2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar}`);
+                    return axios.get(`http://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar}`);
                 });
 
                 Promise.all(avatarRequests)
@@ -130,7 +130,7 @@ function AlwaysOpenExample() {
                                                         <option value='3'>To do</option>
                                                     </select>
                                                     {taskAvatar && (
-                                                        <img src={`2718425.un507148.web.hosting-test.net/api/storage/${taskAvatar.avatar}`}
+                                                        <img src={`http://2718425.un507148.web.hosting-test.net/storage/${taskAvatar.avatar}`}
                                                              alt="Avatar" className={'avatar'}
                                                              style={{width: 30, height: 30}}
                                                              title={taskAvatar.user.name}/>

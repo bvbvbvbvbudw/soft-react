@@ -12,12 +12,12 @@ function MyVerticallyCenteredModal(props) {
         const inputReq = document.getElementById('req')
         e.preventDefault();
         axios
-            .get(`2718425.un507148.web.hosting-test.net/api/findUser?name=${inputReq.value}`)
+            .get(`http://2718425.un507148.web.hosting-test.net/api/findUser?name=${inputReq.value}`)
             .then(response => {
                 setAddUser(response.data);
                 setTimeout(() => {
                     axios
-                        .get(`2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${response.data[0].id}`)
+                        .get(`http://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${response.data[0].id}`)
                         .then(response => {
                             setUserAvatar(response.data.avatar)
                         })
@@ -30,7 +30,7 @@ function MyVerticallyCenteredModal(props) {
     const addUserHandler = (id) => {
         const select = document.getElementById('choice-member')
         axios
-            .post('2718425.un507148.web.hosting-test.net/api/projectadduser',
+            .post('http://2718425.un507148.web.hosting-test.net/api/projectadduser',
                 {
                 project_id: projectId ,
                 user_id: id,
@@ -62,7 +62,7 @@ function MyVerticallyCenteredModal(props) {
                     {addUsers.map(user => (
                         <div key={user.id} style={{display:'flex'}}>
                             <img
-                                src={`2718425.un507148.web.hosting-test.net/storage/${userAvatar}`}
+                                src={`http://2718425.un507148.web.hosting-test.net/storage/${userAvatar}`}
                                 className="avatar"
                                 alt={user.name}
                             />

@@ -92,3 +92,24 @@ thead{
 .on-star{
     color: #ED8A19;
 }
+@media screen and (max-width: 768px) {
+    .search {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding: 20px;
+    }
+
+    .search select,
+    .search-input {
+        width: 100%;
+    }
+
+    .container-table th:nth-child(1),
+    .container-table th:nth-child(2),
+    .container-table th:nth-child(3),
+    .container-table th:nth-child(4),
+    .container-table th:nth-child(5) {
+        grid-column: auto;
+        margin-left: 0;
+    }
+}
