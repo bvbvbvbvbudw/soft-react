@@ -18,10 +18,9 @@ function Project() {
         const fetchData = async () => {
             try {
                 const [projectsResponse, usersResponse] = await Promise.all([
-                    axios.get(`http://localhost:8000/api/projects?user_id=${localStorage.getItem('userName')}`),
-                    axios.get('http://localhost:8000/api/users')
+                    axios.get(`2718425.un507148.web.hosting-test.net/api/projects?user_id=${localStorage.getItem('userName')}`),
+                    axios.get('2718425.un507148.web.hosting-test.net/api/users')
                 ]);
-
                 const projects = projectsResponse.data.response.tasks.data;
                 const users = usersResponse.data.response.users.data;
                 const avatarsUser = [];
@@ -52,7 +51,7 @@ function Project() {
 
         const startLoadingAvatar = async avatarsUser => {
             const avatarPromises = avatarsUser.map(avatar =>
-                axios.get(`http://localhost:8000/api/avatarLoad?user_id=${avatar}`)
+                axios.get(`2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar}`)
             );
 
             try {
@@ -92,13 +91,13 @@ function Project() {
 
         if (isFavorite) {
             star.classList.remove('on-star');
-            await axios.post(`http://localhost:8000/api/favorite`, {
+            await axios.post(`2718425.un507148.web.hosting-test.net/api/favorite`, {
                 user_id: localStorage.getItem('userName'),
                 project_id: project
             });
         } else {
             star.classList.add('on-star');
-            await axios.post(`http://localhost:8000/api/favorite`, {
+            await axios.post(`2718425.un507148.web.hosting-test.net/api/favorite`, {
                 user_id: localStorage.getItem('userName'),
                 project_id: project
             });
@@ -111,7 +110,7 @@ function Project() {
     const isProjectFavorite = async (projectId) => {
         try {
             const response = await axios.get(
-                `http://localhost:8000/api/favorite/toggle?user_id=${localStorage.getItem('userName')}&project_id=${projectId}`
+                `2718425.un507148.web.hosting-test.net/api/favorite/toggle?user_id=${localStorage.getItem('userName')}&project_id=${projectId}`
             );
             return response.data.favoriteExists;
         } catch (error) {
@@ -184,7 +183,7 @@ function Project() {
                                     <a href="/">
                                         {avatarUrl.find(avatar => parseInt(avatar.user_id) === parseInt(project.creator_id)) && (
                                             <img
-                                                src={`http://localhost:8000/storage/${avatarUrl.find(
+                                                src={`2718425.un507148.web.hosting-test.net/api/storage/${avatarUrl.find(
                                                     avatar => parseInt(avatar.user_id) === parseInt(project.creator_id)
                                                 ).avatar}`}
                                                 className={'avatar'}

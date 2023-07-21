@@ -13,11 +13,11 @@ function MyProfile() {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/api/avatarLoad', {params: {userId}})
+            .get('2718425.un507148.web.hosting-test.net/api/avatarLoad', {params: {userId}})
             .then(response => {
                 setUserName(response.data.user.name);
                 const avatarFileName = response.data.avatar;
-                const fullAvatarUrl = `http://localhost:8000/storage/${avatarFileName}`;
+                const fullAvatarUrl = `2718425.un507148.web.hosting-test.net/api/storage/${avatarFileName}`;
                 setAvatarUrl(fullAvatarUrl);
             })
             .catch(error => {

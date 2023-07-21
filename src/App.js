@@ -13,7 +13,6 @@ export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
     return (
         <div className="App">
-            <p>hello world!</p>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />

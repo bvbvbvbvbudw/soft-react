@@ -57,7 +57,7 @@ function MyVerticallyCenteredModal(props) {
         const photos = Array.from(new Set(commentUserIds));
         if (aShow === true) {
             const requests = photos.map((userId) => {
-                return axios.get(`http://localhost:8000/api/avatarLoad?user_id=${userId}`)
+                return axios.get(`2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${userId}`)
                     .then(response => {
                         setUserAvatars(prevAvatars => [...prevAvatars, response.data]);
                         return response.data;
@@ -68,7 +68,7 @@ function MyVerticallyCenteredModal(props) {
                     });
             });
             axios
-                .get(`http://localhost:8000/api/description-task?task=${buttonId}`)
+                .get(`2718425.un507148.web.hosting-test.net/api/description-task?task=${buttonId}`)
                 .then(response => {
                     if (response.data.response.tasks.description && response.data.response.tasks.description.description) {
                         setDescription(response.data.response.tasks.description.description);
@@ -76,7 +76,7 @@ function MyVerticallyCenteredModal(props) {
                 }).catch(error => {
                 console.log(error);
             });
-            axios.get(`http://localhost:8000/api/task-photo-get?task_id=${task.id}`)
+            axios.get(`2718425.un507148.web.hosting-test.net/api/task-photo-get?task_id=${task.id}`)
                 .then(response => {
                     if (response.data.photo) {
                         setPhotoTask(response.data.photo);
@@ -97,7 +97,7 @@ function MyVerticallyCenteredModal(props) {
     useEffect(() => {
         if (sendRequestModal) {
             axios
-                .get(`http://127.0.0.1:8000/api/information-task?task=${buttonId}`)
+                .get(`2718425.un507148.web.hosting-test.net/api/information-task?task=${buttonId}`)
                 .then(response => {
                     const newDefaultValue = response.data.response.status.data.map(user => ({
                         value: user.user.id,
@@ -138,7 +138,7 @@ function MyVerticallyCenteredModal(props) {
             task_id: task.id,
         };
 
-        axios.post('http://localhost:8000/api/comment', comment)
+        axios.post('2718425.un507148.web.hosting-test.net/api/comment', comment)
             .then(response => {
                 const createdComment = response.data.response.comment.data;
                 const inp = document.getElementById('comment-input');
@@ -150,13 +150,13 @@ function MyVerticallyCenteredModal(props) {
     const updateDescription = (e, task) => {
         e.preventDefault();
         const inp = document.getElementById('description-input');
-        axios.post(`http://localhost:8000/api/description-task`, {
+        axios.post(`2718425.un507148.web.hosting-test.net/api/description-task`, {
             task_id: task,
             description: inp.value
         }).catch(error => console.error(error))
     };
     const deleteCommentHandler = (commentId) => {
-        axios.post(`http://127.0.0.1:8000/api/comment?deleteId=${parseInt(commentId)}`)
+        axios.post(`2718425.un507148.web.hosting-test.net/api/comment?deleteId=${parseInt(commentId)}`)
             .then(response => {
                 const commentIndex = outputComments.findIndex(comment => comment.id === parseInt(commentId));
                 if (commentIndex !== -1) {
@@ -183,7 +183,7 @@ function MyVerticallyCenteredModal(props) {
                         return `
             <div class="comment-container">
               <div class="user-info">
-                <img src="http://localhost:8000/storage/${avatar.avatar}" class="avatar" alt="${user.name}">
+                <img src="2718425.un507148.web.hosting-test.net/storage/${avatar.avatar}" class="avatar" alt="${user.name}">
                 <p class="user-name">${user.name}</p>
                 <p class="comment-date">${formatDate(comment.created_at)}</p>
               </div>
@@ -238,7 +238,7 @@ function MyVerticallyCenteredModal(props) {
         if (removedUserIds.length > 0) {
             removedUserIds.forEach((removedUserId) => {
                 axios
-                    .post(`http://127.0.0.1:8000/api/information-task?deleteId=${removedUserId.value}`)
+                    .post(`2718425.un507148.web.hosting-test.net/api/information-task?deleteId=${removedUserId.value}`)
                     .then((response) => {
                         const updatedArray = defaultValue.filter(
                             (defaultValue) => defaultValue.value !== removedUserId.value
@@ -274,7 +274,7 @@ function MyVerticallyCenteredModal(props) {
             formData.append("task_id", task.id);
 
             axios
-                .post("http://localhost:8000/api/task-photo", formData)
+                .post("2718425.un507148.web.hosting-test.net/api/task-photo", formData)
                 .catch((error) => {
                     console.error(error);
                 });
@@ -285,7 +285,7 @@ function MyVerticallyCenteredModal(props) {
         const date = document.getElementById('date-information');
         const userIds = defaultValue.map((user) => user.value);
         axios
-            .post('http://127.0.0.1:8000/api/information-task', {
+            .post('2718425.un507148.web.hosting-test.net/api/information-task', {
                 task_id: task.id,
                 user_assigned: userIds,
                 deadline: date.value,
@@ -348,7 +348,7 @@ function MyVerticallyCenteredModal(props) {
                                 </div>
                                 <div className="create-comments">
                                     <img
-                                        src={foundUser ? `http://localhost:8000/storage/${foundUser.avatar}` : null}
+                                        src={foundUser ? `2718425.un507148.web.hosting-test.net/storage/${foundUser.avatar}` : null}
                                         className="avatar" alt='avatar'
                                     />
                                     <form action="" onSubmit={CreateCommentsHandler}>
@@ -369,7 +369,7 @@ function MyVerticallyCenteredModal(props) {
                                                 <div key={comment.id} className="comment-container">
                                                     <div className="user-info">
                                                         <img
-                                                            src={`http://localhost:8000/storage/${avatar.avatar}`}
+                                                            src={`2718425.un507148.web.hosting-test.net/storage/${avatar.avatar}`}
                                                             className="avatar"
                                                             alt={user.name}
                                                         />
@@ -398,7 +398,7 @@ function MyVerticallyCenteredModal(props) {
                                         { !isFullScreen && (
                                             <>
                                                 <img className="task-photo"
-                                                     src={`http://localhost:8000/storage/${photoTask}`} alt=""
+                                                     src={`2718425.un507148.web.hosting-test.net/storage/${photoTask}`} alt=""
                                                      onClick={handleImageClick}/>
                                                 {currentUserRole === 'teamlead' ?
                                                     <div className="control-gallery">
@@ -413,7 +413,7 @@ function MyVerticallyCenteredModal(props) {
                                         {isFullScreen && (
                                             <div className="fullscreen-overlay" onClick={handleFullScreenExit}>
                                                 <img className="fullscreen-image"
-                                                     src={`http://localhost:8000/storage/${photoTask}`} alt=""/>
+                                                     src={`2718425.un507148.web.hosting-test.net/storage/${photoTask}`} alt=""/>
                                             </div>
                                         )}
                                     </div>
@@ -505,7 +505,7 @@ function ButtonModal({tasks, buttonId, currentUserRole, foundUser, assignedUser}
     useEffect(() => {
         if (!isMounted.current) {
             axios
-                .get(`http://localhost:8000/api/commenttaskuser`)
+                .get(`2718425.un507148.web.hosting-test.net/api/commenttaskuser`)
                 .then(response => {
                     const responseData = response.data.response.data;
                     setComments(responseData.comments);

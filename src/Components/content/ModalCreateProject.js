@@ -11,7 +11,7 @@ function MyVerticallyCenteredModal(props) {
         e.preventDefault()
         console.log(inputReq.value);
         axios
-            .post('http://localhost:8000/api/projects', {
+            .post('2718425.un507148.web.hosting-test.net/api/projects', {
                 project: inputReq.value,
                 creator_id: localStorage.getItem('userName')
             })
@@ -20,10 +20,6 @@ function MyVerticallyCenteredModal(props) {
             })
             .catch(error => console.error(error));
     };
-
-    // const addUserHandler = (id) => {
-    //     console.log(id)
-    // }
     return (
         <div className='modal-window-user-add'>
             <Modal
@@ -44,22 +40,6 @@ function MyVerticallyCenteredModal(props) {
                         <input type="text" id='response-create-project' placeholder='enter project name'/>
                         <button type='submit'>Add</button>
                     </form>
-
-                    {/*<div className="response-find-user">*/}
-                    {/*    {addUsers.map(user => (*/}
-                    {/*        <div key={user.id}>*/}
-                    {/*            <img*/}
-                    {/*                src={`http://localhost:8000/storage/${userAvatar}`}*/}
-                    {/*                className="avatar"*/}
-                    {/*                alt={user.name}*/}
-                    {/*            />*/}
-                    {/*            <p>Name: {user.name}</p>*/}
-                    {/*            <p>Email: {user.email}</p>*/}
-                    {/*            <button onClick={() => addUserHandler(user.id)}>add current user</button>*/}
-                    {/*        </div>*/}
-                    {/*    ))}*/}
-                    {/*</div>*/}
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={props.onHide}>Close</Button>
@@ -87,10 +67,7 @@ function ModalUser() {
 }
 
 export default function ModalCreateProject(){
-
     return(<>
-
         <ModalUser/>
-
     </>)
 };
