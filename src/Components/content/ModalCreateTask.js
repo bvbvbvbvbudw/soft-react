@@ -10,7 +10,7 @@ function MyVerticallyCenteredModal(props) {
         const inputReq = document.getElementById('response-create-task')
         e.preventDefault()
             axios
-                .post('http://2718425.un507148.web.hosting-test.net/api/task', {
+                .post('https://2718425.un507148.web.hosting-test.net/api/task', {
                     name: inputReq.value,
                     user_id: localStorage.getItem('userName'),
                     status_id: 3,

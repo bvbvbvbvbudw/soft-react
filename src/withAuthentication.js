@@ -10,7 +10,7 @@ function withAuthentication(Component) {
             const checkAuthentication = async () => {
                 const token = localStorage.getItem('token');
                 try {
-                    const response = await axios.get('http://2718425.un507148.web.hosting-test.net/api/check-authentication', {
+                    const response = await axios.get('https://2718425.un507148.web.hosting-test.net/api/check-authentication', {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },

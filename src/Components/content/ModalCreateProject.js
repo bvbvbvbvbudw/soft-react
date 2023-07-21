@@ -9,7 +9,7 @@ function MyVerticallyCenteredModal(props) {
         e.preventDefault()
         console.log(inputReq.value);
         axios
-            .post('http://2718425.un507148.web.hosting-test.net/api/projects', {
+            .post('https://2718425.un507148.web.hosting-test.net/api/projects', {
                 project: inputReq.value,
                 creator_id: localStorage.getItem('userName')
             })
