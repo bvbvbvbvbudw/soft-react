@@ -36,7 +36,6 @@ function BackLog() {
                             </ol>
                             <p className='title-backlog'>Backlog</p>
                         </div>
-                        <button className='more-btn-header'>...</button>
                     </div>
                     <div className='search-container-backlog'>
                         <div className="search-container-left">

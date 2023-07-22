@@ -177,8 +177,8 @@ function Project() {
                                         {project.project}
                                     </a>
                                 </td>
-                                <td>--------------</td>
-                                <td>-------------</td>
+                                <td>-----</td>
+                                <td>-----</td>
                                 <td>
                                     <a href="/">
                                         {avatarUrl.find(avatar => parseInt(avatar.user_id) === parseInt(project.creator_id)) && (
