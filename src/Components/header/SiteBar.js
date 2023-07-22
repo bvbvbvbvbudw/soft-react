@@ -59,9 +59,9 @@ export default function SiteBar(){
 
             <div className="container-planning">
                 <p className='title'>Planning</p>
-                <a href='/project' id='roadMap'><span><img src={RoadMap} alt=""/></span>Всі доступні проекти</a>
-                <a href='/backlog' id='backlog'><span><img src={BackLog} alt=""/></span>Мої завдання</a>
-                <a href='/board' id='board'><span><img src={Board} alt=""/></span>Дошка</a>
+                <a className='control-link' href='/project' id='roadMap'><span><img src={RoadMap} alt=""/></span>Всі доступні проекти</a>
+                <a className='control-link' href='/backlog' id='backlog'><span><img src={BackLog} alt=""/></span>Мої завдання</a>
+                <a className='control-link' href='/board' id='board'><span><img src={Board} alt=""/></span>Дошка</a>
             </div>
 
             <div className="container-development">
