@@ -133,7 +133,6 @@ function Project() {
             <div className="project-page" id="project-page">
                 <div className="search">
                     <h3>Projects</h3>
-                    <h1>V3NLAY PIDORAS</h1>
                     <input
                         type="text"
                         className="search-input"
