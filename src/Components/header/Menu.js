@@ -22,13 +22,17 @@ export default function Menu() {
     useEffect(() => {
         setIsLoggedIn(localStorage.getItem('isLoggedIn'));
     },[isLoggedIn])
-    const [closedSiteBar, setClosedSiteBar] = useState(false);
+
+    const [closedSiteBar, setClosedSiteBar] = useState(localStorage.getItem('siteBar'));
+
     useEffect(() => {
         const sitebar = document.getElementById('sitebar');
         if (sitebar.classList.contains('closed')) {
             sitebar.classList.remove('closed');
+            localStorage.setItem("siteBar", false)
         } else {
             sitebar.classList.add('closed');
+            localStorage.setItem("siteBar", true)
         }
     }, [closedSiteBar]);
     return (

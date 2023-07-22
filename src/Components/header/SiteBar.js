@@ -15,32 +15,45 @@
 
 export default function SiteBar(){
 
-    const [closedSiteBar, setClosedSiteBar] = useState(false);
+    const [closedSiteBar, setClosedSiteBar] = useState(
+        localStorage.getItem('siteBar') === 'true' // Convert the string to a boolean
+    );
+
+    // Toggle the sidebar state when the close button is clicked
+    const handleToggleSidebar = () => {
+        setClosedSiteBar(!closedSiteBar);
+    };
 
     useEffect(() => {
+        // Get the sidebar element and the navigation links
         const sitebar = document.getElementById('sitebar');
-        const roadMap = document.getElementById('roadMap')
-        const board = document.getElementById('board')
-        const backlog = document.getElementById('backlog')
+        const roadMap = document.getElementById('roadMap');
+        const board = document.getElementById('board');
+        const backlog = document.getElementById('backlog');
+
+        // Toggle the sidebar classes based on the 'closedSiteBar' state
         if (closedSiteBar) {
             sitebar.classList.add('closed');
         } else {
             sitebar.classList.remove('closed');
         }
-        if(window.location.pathname === '/backlog'){
+
+        // Set the 'closedSiteBar' state in local storage
+        localStorage.setItem('siteBar', closedSiteBar);
+
+        // Add or remove the 'active-sitebar' class to the navigation links based on the current pathname
+        if (window.location.pathname === '/backlog') {
             roadMap.classList.remove('active-sitebar');
             board.classList.remove('active-sitebar');
             backlog.classList.add('active-sitebar');
-        }
-        if(window.location.pathname === '/board'){
-            roadMap.classList.remove('active-sitebar')
+        } else if (window.location.pathname === '/board') {
+            roadMap.classList.remove('active-sitebar');
             backlog.classList.remove('active-sitebar');
             board.classList.add('active-sitebar');
-        }
-        if(window.location.pathname === '/project'){
-            board.classList.remove('active-sitebar')
+        } else if (window.location.pathname === '/project') {
+            board.classList.remove('active-sitebar');
             backlog.classList.remove('active-sitebar');
-            roadMap.classList.add('active-sitebar')
+            roadMap.classList.add('active-sitebar');
         }
     }, [closedSiteBar]);
 
@@ -54,7 +67,9 @@ export default function SiteBar(){
                     <p className='project-name'>Project Name This</p>
                     <p className='role'>Software project</p>
                 </div>
-                <button className='btn-close-sitebar' onClick={() => setClosedSiteBar(!closedSiteBar)} >&#8249;</button>
+                <button className='btn-close-sitebar' onClick={handleToggleSidebar}>
+                    &#8249;
+                </button>
             </div>
 
             <div className="container-planning">
