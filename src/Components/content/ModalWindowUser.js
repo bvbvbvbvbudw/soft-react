@@ -12,12 +12,12 @@ function MyVerticallyCenteredModal(props) {
         const inputReq = document.getElementById('req')
         e.preventDefault();
         axios
-            .get(`https://2718425.un507148.web.hosting-test.net/api/findUser?name=${inputReq.value}`)
+            .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/findUser?name=${inputReq.value}`)
             .then(response => {
                 setAddUser(response.data);
                 setTimeout(() => {
                     axios
-                        .get(`https://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${response.data[0].id}`)
+                        .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${response.data[0].id}`)
                         .then(response => {
                             setUserAvatar(response.data.avatar)
                         })
@@ -30,7 +30,7 @@ function MyVerticallyCenteredModal(props) {
     const addUserHandler = (id) => {
         const select = document.getElementById('choice-member')
         axios
-            .post('https://2718425.un507148.web.hosting-test.net/api/projectadduser',
+            .post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser',
                 {
                 project_id: projectId ,
                 user_id: id,
@@ -48,40 +48,39 @@ function MyVerticallyCenteredModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
+                    Додавання користувача
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
                 <form action="" onSubmit={sendRequest}>
-                    <input type="text" id='req' placeholder='enter user name'/>
-                    <button type='submit'>Add</button>
+                    <input type="text" id='req' placeholder='Введіть нік користувача'/>
+                    <button type='submit'>Шукати</button>
                 </form>
 
                 <div className="response-find-user">
                     {addUsers.map(user => (
                         <div key={user.id} style={{display:'flex'}}>
                             <img
-                                src={`https://2718425.un507148.web.hosting-test.net/storage/${userAvatar}`}
+                                src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${userAvatar}`}
                                 className="avatar"
                                 alt={user.name}
                             />
                             <div>
-                                <p>Name: {user.name}</p>
-                                <p>Email: {user.email}</p>
+                                <p>І'мя: {user.name}</p>
+                                <p>Емейл: {user.email}</p>
                             </div>
                             <select name="" id="choice-member" defaultValue='teamlead'>
-                                <option value="teamlead">teamlead</option>
-                                <option value="teamworker">teamworker</option>
+                                <option value="teamlead">ТімЛід</option>
+                                <option value="teamworker">Виконавець</option>
                             </select>
-                            <button onClick={() => addUserHandler(user.id)}>add current user</button>
+                            <button onClick={() => addUserHandler(user.id)}>Додати користувача</button>
                         </div>
                     ))}
                 </div>
 
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button onClick={props.onHide}>Закрити</Button>
             </Modal.Footer>
         </Modal>
         </div>
@@ -94,7 +93,7 @@ function ModalUser() {
     return (
         <>
             <Button variant="primary" onClick={() => setModalShow(true)}>
-                +
+                Додати користувача
             </Button>
 
             <MyVerticallyCenteredModal

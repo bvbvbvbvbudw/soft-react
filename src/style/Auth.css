@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /*height: 100vh;*/
 }
 
 .wrapper-container-auth .form-container {
@@ -41,4 +41,17 @@
 
 .wrapper-container-auth button:hover {
     background-color: #23527c;
+}
+/* Стили для смартфонов (ширина экрана < 768 пикселей) */
+@media screen and (max-width: 767px) {
+    /* Дополнительные стили для смартфонов */
+    .wrapper-auth {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Стили для планшетов (ширина экрана >= 768 пикселей и < 1024 пикселей) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Дополнительные стили для планшетов */
 }

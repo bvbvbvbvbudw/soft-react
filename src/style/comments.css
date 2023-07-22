@@ -223,3 +223,72 @@
         width: 100%;
     }
 }
+@media screen and (max-width: 767px) {
+    .wrapper-modal {
+        flex-direction: column;
+    }
+    .modal-dialog{
+        margin-top: 300px;
+    }
+    .left-side-modal,
+    .right-side-modal {
+        gap: 15px;
+    }
+
+    .title-on-modal {
+        font-size: 24px;
+    }
+
+    .container-buttons,
+    .activity,
+    .buttons {
+        flex-direction: column;
+    }
+
+    .container-buttons button,
+    .buttons button {
+        width: 100%;
+    }
+
+    .activity {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .create-comments input {
+        width: 100%;
+    }
+
+    .container-comments {
+        max-height: none;
+    }
+
+    .container-in-modal {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .task-photo {
+        width: 100%;
+        height: auto;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .control-gallery {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .control-gallery input[type="file"] {
+        width: 100%;
+        max-width: 200px;
+    }
+}

@@ -10,7 +10,7 @@ function MyVerticallyCenteredModal(props) {
         const inputReq = document.getElementById('response-create-task')
         e.preventDefault()
             axios
-                .post('https://2718425.un507148.web.hosting-test.net/api/task', {
+                .post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/task', {
                     name: inputReq.value,
                     user_id: localStorage.getItem('userName'),
                     status_id: 3,
@@ -32,19 +32,18 @@ function MyVerticallyCenteredModal(props) {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Modal heading
+                        Додавання таску
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Centered Modal</h4>
                     <form action="" onSubmit={sendRequest}>
-                        <input type="text" id='response-create-task' placeholder='enter task name'/>
-                        <button type='submit'>Add</button>
+                        <input type="text" id='response-create-task' placeholder='Введіть назву завдання'/>
+                        <button type='submit' className='btn btn-primary'>Додати</button>
                     </form>
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button onClick={props.onHide}>Закрити</Button>
                 </Modal.Footer>
             </Modal>
         </div>

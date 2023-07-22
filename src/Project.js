@@ -18,9 +18,8 @@ function Project() {
         const fetchData = async () => {
             try {
                 const [projectsResponse, usersResponse] = await Promise.all([
-                    axios.get(`https://2718425.un507148.web.hosting-test.net/api/projects?user_id=1`),
-                    // axios.get(`https://2718425.un507148.web.hosting-test.net/api/projects?user_id=${localStorage.getItem('userName')}`),
-                    axios.get('https://2718425.un507148.web.hosting-test.net/api/users')
+                    axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects?user_id=${localStorage.getItem('userName')}`),
+                    axios.get('https://bvbvbvbvbudw-001-site1.atempurl.com/api/users')
                 ]);
                 const projects = projectsResponse.data.response.tasks.data;
                 const users = usersResponse.data.response.users.data;
@@ -52,7 +51,7 @@ function Project() {
 
         const startLoadingAvatar = async avatarsUser => {
             const avatarPromises = avatarsUser.map(avatar =>
-                axios.get(`https://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar}`)
+                axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${avatar}`)
             );
 
             try {
@@ -92,13 +91,13 @@ function Project() {
 
         if (isFavorite) {
             star.classList.remove('on-star');
-            await axios.post(`https://2718425.un507148.web.hosting-test.net/api/favorite`, {
+            await axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/favorite`, {
                 user_id: localStorage.getItem('userName'),
                 project_id: project
             });
         } else {
             star.classList.add('on-star');
-            await axios.post(`https://2718425.un507148.web.hosting-test.net/api/favorite`, {
+            await axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/favorite`, {
                 user_id: localStorage.getItem('userName'),
                 project_id: project
             });
@@ -111,7 +110,7 @@ function Project() {
     const isProjectFavorite = async (projectId) => {
         try {
             const response = await axios.get(
-                `https://2718425.un507148.web.hosting-test.net/api/favorite/toggle?user_id=${localStorage.getItem('userName')}&project_id=${projectId}`
+                `https://bvbvbvbvbudw-001-site1.atempurl.com/api/favorite/toggle?user_id=${localStorage.getItem('userName')}&project_id=${projectId}`
             );
             return response.data.favoriteExists;
         } catch (error) {
@@ -184,7 +183,7 @@ function Project() {
                                     <a href="/">
                                         {avatarUrl.find(avatar => parseInt(avatar.user_id) === parseInt(project.creator_id)) && (
                                             <img
-                                                src={`https://2718425.un507148.web.hosting-test.net/storage/${avatarUrl.find(
+                                                src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatarUrl.find(
                                                     avatar => parseInt(avatar.user_id) === parseInt(project.creator_id)
                                                 ).avatar}`}
                                                 className={'avatar'}
@@ -206,5 +205,5 @@ function Project() {
         </Layout>
     );
 }
-export default Project;
-// export default withAuthentication(Project);
+// export default Project
+export default withAuthentication(Project);

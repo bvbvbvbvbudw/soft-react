@@ -11,6 +11,7 @@ import MyProfile from "./MyProfile";
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
+
     return (
         <div className="App">
             <BrowserRouter>
@@ -23,8 +24,6 @@ export default function App() {
                             <Route path="/backlog/:projectId" element={<BackLogPage />} />
                             <Route path="/board" element={<Board />} />
                             <Route path="/profile" element={<MyProfile />} />
-                            {/*<Route path="/about" element={<MyProfile />} />*/}
-                            {/*<Route path="/support" element={<MyProfile />} />*/}
                         </>
                         <Route
                             path="/auth"

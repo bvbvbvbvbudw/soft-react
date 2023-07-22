@@ -9,21 +9,21 @@ import './style/profile.css'
 function MyProfile() {
     const [avatarUrl, setAvatarUrl] = useState('');
     const [userName, setUserName] = useState('');
-    const userId = String(localStorage.getItem('userName'));
+    // const userId = String(localStorage.getItem('userName'));
 
     useEffect(() => {
         axios
-            .get('https://2718425.un507148.web.hosting-test.net/api/avatarLoad', {params: {userId}})
+            .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${localStorage.getItem('userName')}`)
             .then(response => {
                 setUserName(response.data.user.name);
                 const avatarFileName = response.data.avatar;
-                const fullAvatarUrl = `https://2718425.un507148.web.hosting-test.net/api/storage/${avatarFileName}`;
+                const fullAvatarUrl = `https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatarFileName}`;
                 setAvatarUrl(fullAvatarUrl);
             })
             .catch(error => {
                 console.error(error);
             });
-    },[userId])
+    },[])
     return (
         <Layout>
             <SiteBar />

@@ -79,7 +79,7 @@ export default function Auth({ isLoggedIn, setIsLoggedIn, setIsAdmin }) {
             <div className="wrapper-container-auth">
                 <Layout>
                     <SiteBar />
-                    <div className="container">
+                    <div className="container wrapper-auth">
                         <div className="form-container">
                             <h1>Вход</h1>
                             <form onSubmit={handleLoginSubmit} onChange={() => setCorrectForms(false)}>

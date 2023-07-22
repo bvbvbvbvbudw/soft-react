@@ -30,7 +30,7 @@ function AlwaysOpenExample() {
     };
     const handleChangeTaskInfo = (task, e) => {
         const selectValue = e.target.value;
-        axios.post(`https://2718425.un507148.web.hosting-test.net/api/task?id=${task.id}`, {
+        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task?id=${task.id}`, {
             name: task.name,
             user_id: task.user_id,
             status_id: selectValue,
@@ -40,18 +40,18 @@ function AlwaysOpenExample() {
     }
 
     useEffect(() => {
-        axios.get(`https://2718425.un507148.web.hosting-test.net/api/projects?user_id=${localStorage.getItem('userName')}`)
+        axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects?user_id=${localStorage.getItem('userName')}`)
             .then(response => {
                 setProjects(response.data.response.tasks.data)
             })
-        axios.get(`https://2718425.un507148.web.hosting-test.net/api/information-task`)
+        axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/information-task`)
             .then(response => {
                 setCurrentTasks(response.data.response.status.data)
             })
     }, []);
 
     const test = (projectId) => {
-        axios.get(`https://2718425.un507148.web.hosting-test.net/api/currentTask?project_id=${projectId}`)
+        axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/currentTask?project_id=${projectId}`)
             .then(response => {
                 const userIds = {};
                 response.data.forEach(item => {
@@ -66,7 +66,7 @@ function AlwaysOpenExample() {
                 }));
 
                 const avatarRequests = Object.keys(userIds).map(avatar => {
-                    return axios.get(`https://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar}`);
+                    return axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${avatar}`);
                 });
 
                 Promise.all(avatarRequests)
@@ -125,12 +125,12 @@ function AlwaysOpenExample() {
                                                             onChange={(e) => handleChangeTaskInfo(task, e)}
                                                             onClick={choiseSelect}
                                                             defaultValue={task.status_id.toString()}>
-                                                        <option value='1'>Done</option>
-                                                        <option value='2'>Testing</option>
-                                                        <option value='3'>To do</option>
+                                                        <option value='1'>Виконано</option>
+                                                        <option value='2'>Тестування</option>
+                                                        <option value='3'>В роботі</option>
                                                     </select>
                                                     {taskAvatar && (
-                                                        <img src={`https://2718425.un507148.web.hosting-test.net/storage/${taskAvatar.avatar}`}
+                                                        <img src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${taskAvatar.avatar}`}
                                                              alt="Avatar" className={'avatar'}
                                                              style={{width: 30, height: 30}}
                                                              title={taskAvatar.user.name}/>

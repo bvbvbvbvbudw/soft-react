@@ -12,7 +12,7 @@
  import ProjectPages from '../../images/project-pages.png';
  import ShortCut from '../../images/shortcut.png';
  import Settings from '../../images/settings.png';
- import Nav from "react-bootstrap-v5/lib/esm/Nav";
+ 
 export default function SiteBar(){
 
     const [closedSiteBar, setClosedSiteBar] = useState(false);
@@ -59,9 +59,9 @@ export default function SiteBar(){
 
             <div className="container-planning">
                 <p className='title'>Planning</p>
-                <Nav.Link href='/project' id='roadMap'><span><img src={RoadMap} alt=""/></span>Всі доступні проекти</Nav.Link>
-                <Nav.Link href='/backlog' id='backlog'><span><img src={BackLog} alt=""/></span>Мої завдання</Nav.Link>
-                <Nav.Link href='/board' id='board'><span><img src={Board} alt=""/></span>Дошка</Nav.Link>
+                <a href='/project' id='roadMap'><span><img src={RoadMap} alt=""/></span>Всі доступні проекти</a>
+                <a href='/backlog' id='backlog'><span><img src={BackLog} alt=""/></span>Мої завдання</a>
+                <a href='/board' id='board'><span><img src={Board} alt=""/></span>Дошка</a>
             </div>
 
             <div className="container-development">

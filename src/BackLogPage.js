@@ -72,8 +72,8 @@ const BackLogPage = () => {
         const fetchInitialData = async () => {
             try {
                 const [tasksResponse, projectResponse] = await axios.all([
-                    axios.get(`https://2718425.un507148.web.hosting-test.net/api/currentTask?project_id=${projectId}`),
-                    axios.get(`https://2718425.un507148.web.hosting-test.net/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
+                    axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/currentTask?project_id=${projectId}`),
+                    axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
                 ]);
                 setTasks(tasksResponse.data);
                 setAvatars(projectResponse.data.response.comments.data);
@@ -89,7 +89,7 @@ const BackLogPage = () => {
     }, []);
     useEffect(() => {
         Promise.all(avatars.map(avatar => {
-            return axios.get(`https://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${avatar.id}`);
+            return axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${avatar.id}`);
         }))
             .then(responses => {
                 const avatarsData = responses.map(response => response.data);
@@ -135,14 +135,14 @@ const BackLogPage = () => {
     };
 
     const deleteTaskHandler = (id) => {
-        axios.post(`https://2718425.un507148.web.hosting-test.net/api/task?deleteId=${id}`)
+        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task?deleteId=${id}`)
             .then(response => {
                 setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
             })
             .catch(error => console.error(error));
     }
     const deleteProjectHandler = (project) => {
-        axios.post(`https://2718425.un507148.web.hosting-test.net/api/projects?deleteId=${project}`).then(response => navigate('/project'))
+        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects?deleteId=${project}`).then(response => navigate('/project'))
     }
     const editProjectHandler = () => {
         const nameElement = document.getElementById('currentProject');
@@ -156,7 +156,7 @@ const BackLogPage = () => {
             this.parentNode.replaceChild(nameElement, this);
 
             axios
-                .post(`https://2718425.un507148.web.hosting-test.net/api/projects?id=${projectId}`, {
+                .post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects?id=${projectId}`, {
                     project: updatedName,
                     creator_id: encodeURIComponent(localStorage.getItem('userName'))
                 })
@@ -173,7 +173,7 @@ const BackLogPage = () => {
 
     const deleteUserHandler = (id) => {
         console.log(id)
-        axios.post(`https://2718425.un507148.web.hosting-test.net/api/projectadduser?deleteId=${id}&project_id=${projectId}`)
+        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser?deleteId=${id}&project_id=${projectId}`)
             .then(response =>
                 window.location.reload()
             )
@@ -183,7 +183,7 @@ const BackLogPage = () => {
     }
     const handleChangeTaskInfo = (task, e) => {
         const selectValue = e.target.value;
-        axios.post(`https://2718425.un507148.web.hosting-test.net/api/task?id=${task.id}`, {
+        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task?id=${task.id}`, {
             name: task.name,
             user_id: task.user_id,
             status_id: selectValue,
@@ -221,7 +221,7 @@ const BackLogPage = () => {
                                 <div className="search-input-tasks">
                                     <input
                                         type="text"
-                                        placeholder="search...."
+                                        placeholder="Пошук...."
                                         value={searchQuery}
                                         onChange={e => setSearchQuery(e.target.value)}
                                     />
@@ -232,27 +232,31 @@ const BackLogPage = () => {
                                     )}
                                 </div>
                                 <div className='images-users'>
-                                    {showAvatars.map(avatar => (
-                                        <img
-                                            key={avatar.user_id}
-                                            src={`https://2718425.un507148.web.hosting-test.net/api/storage/${avatar.avatar}`}
-                                            className="avatar"
-                                            alt="Avatar"
-                                            title={avatar.user.name}
-                                            onClick={
-                                                currentUserRole === 'teamlead' ?
-                                                    () => {
-                                                        deleteUserHandler(avatar.user_id)
-                                                    } : null}
-                                        />))}
+                                    {showAvatars.map(avatar => (<>
+                                        <div style={{display:"flex", flexDirection:"column"}}>
+                                            <img
+                                                key={avatar.user_id}
+                                                src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatar.avatar}`}
+                                                className="avatar"
+                                                alt="Avatar"
+                                                title={avatar.user.name}
+                                                onClick={
+                                                    currentUserRole === 'teamlead' ?
+                                                        () => {
+                                                            deleteUserHandler(avatar.user_id)
+                                                        } : null}
+                                            />
+                                            <p>{avatar.user.name}</p>
+                                        </div>
+                                    </>))}
                                     {currentUserRole === 'teamlead' ?
                                         <>
                                                 <ModalWindowUser/>
                                                 <button className={'btn btn-primary'}
-                                                        onClick={() => editProjectHandler(projectId)}>edit
+                                                        onClick={() => editProjectHandler(projectId)}>Редагувати назву проекту
                                                 </button>
                                                 <button className={'btn btn-primary'}
-                                                        onClick={() => deleteProjectHandler(projectId)}>delete
+                                                        onClick={() => deleteProjectHandler(projectId)}>Видалити проект
                                                 </button>
                                         </> : null
                                     }
@@ -279,7 +283,7 @@ const BackLogPage = () => {
                                         <p className="count third" id="done">{valuesSelect.done}</p>
                                     </> : null
                                 }
-                                <button className='submit-btn'>Complete sprint</button>
+                                <button className='submit-btn btn btn-secondary disabled'>Завершити проект</button>
                                 <button className='more-btn'>...</button>
                             </div>
                         </div>
@@ -288,7 +292,7 @@ const BackLogPage = () => {
                             {tasks.length > 0 ? (
                                 tasks.map((task, index) => {
                                     const taskAvatar = showAvatars.find(avatar => avatar.user_id === task.user_id.toString());
-                                    const avatarSrc = taskAvatar ? `https://2718425.un507148.web.hosting-test.net/storage/${taskAvatar.avatar}` : '';
+                                    const avatarSrc = taskAvatar ? `https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${taskAvatar.avatar}` : '';
                                     const hideClass = searchQuery && !task.name.toLowerCase().includes(searchQuery.toLowerCase()) ? 'hide' : '';
 
                                     return (
@@ -318,9 +322,9 @@ const BackLogPage = () => {
                                                     onClick={choiseSelect}
                                                     defaultValue={task.status_id.toString()}
                                                 >
-                                                    <option value="1">Done</option>
-                                                    <option value="2">Testing</option>
-                                                    <option value="3">To do</option>
+                                                    <option value="1">Зроблено</option>
+                                                    <option value="2">Тестування</option>
+                                                    <option value="3">В роботі</option>
                                                 </select>
                                                 <img key={taskAvatar ? taskAvatar.user_id : 'default'} src={avatarSrc} className="avatar" alt="Avatar" />
                                             </div>
@@ -328,7 +332,7 @@ const BackLogPage = () => {
                                     );
                                 })
                             ) : (
-                                <p>No tasks found.</p>
+                                <p>Не знайдено завдань.</p>
                             )}
                         </div>
                     </div>
@@ -337,5 +341,5 @@ const BackLogPage = () => {
         </>
     );
 }
-
+// export default BackLogPage
 export default withAuthentication(BackLogPage);

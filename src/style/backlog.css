@@ -98,7 +98,7 @@
     border-radius: 5px;
 }
 .submit-btn{
-    width: 140px;
+    width: 170px;
     height: 30px;
 }
 .more-btn{
@@ -160,7 +160,7 @@
     margin-top: 5px;
 }
 .right-side-content select{
-    width: 70px;
+    width: 110px;
     height: 24px;
     border:none;
     border-radius: 5px;
@@ -175,7 +175,7 @@
     color:#006644;
 }
 .active-second{
-    width: 80px!important;
+    width: 120px!important;
     background-color: #deebff;
     color:#0052cc;
 }

@@ -57,7 +57,7 @@ function MyVerticallyCenteredModal(props) {
         const photos = Array.from(new Set(commentUserIds));
         if (aShow === true) {
             const requests = photos.map((userId) => {
-                return axios.get(`https://2718425.un507148.web.hosting-test.net/api/avatarLoad?user_id=${userId}`)
+                return axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${userId}`)
                     .then(response => {
                         setUserAvatars(prevAvatars => [...prevAvatars, response.data]);
                         return response.data;
@@ -68,7 +68,7 @@ function MyVerticallyCenteredModal(props) {
                     });
             });
             axios
-                .get(`https://2718425.un507148.web.hosting-test.net/api/description-task?task=${buttonId}`)
+                .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/description-task?task=${buttonId}`)
                 .then(response => {
                     if (response.data.response.tasks.description && response.data.response.tasks.description.description) {
                         setDescription(response.data.response.tasks.description.description);
@@ -76,7 +76,7 @@ function MyVerticallyCenteredModal(props) {
                 }).catch(error => {
                 console.log(error);
             });
-            axios.get(`https://2718425.un507148.web.hosting-test.net/api/task-photo-get?task_id=${task.id}`)
+            axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task-photo-get?task_id=${task.id}`)
                 .then(response => {
                     if (response.data.photo) {
                         setPhotoTask(response.data.photo);
@@ -93,11 +93,11 @@ function MyVerticallyCenteredModal(props) {
                     console.error(error);
                 });
         }
-    }, [aShow, buttonId, commentUserIds, task.id]);
+    }, [aShow]);
     useEffect(() => {
         if (sendRequestModal) {
             axios
-                .get(`https://2718425.un507148.web.hosting-test.net/api/information-task?task=${buttonId}`)
+                .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/information-task?task=${buttonId}`)
                 .then(response => {
                     const newDefaultValue = response.data.response.status.data.map(user => ({
                         value: user.user.id,
@@ -138,7 +138,7 @@ function MyVerticallyCenteredModal(props) {
             task_id: task.id,
         };
 
-        axios.post('https://2718425.un507148.web.hosting-test.net/api/comment', comment)
+        axios.post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/comment', comment)
             .then(response => {
                 const createdComment = response.data.response.comment.data;
                 const inp = document.getElementById('comment-input');
@@ -150,13 +150,13 @@ function MyVerticallyCenteredModal(props) {
     const updateDescription = (e, task) => {
         e.preventDefault();
         const inp = document.getElementById('description-input');
-        axios.post(`https://2718425.un507148.web.hosting-test.net/api/description-task`, {
+        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/description-task`, {
             task_id: task,
             description: inp.value
         }).catch(error => console.error(error))
     };
     const deleteCommentHandler = (commentId) => {
-        axios.post(`https://2718425.un507148.web.hosting-test.net/api/comment?deleteId=${parseInt(commentId)}`)
+        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/comment?deleteId=${parseInt(commentId)}`)
             .then(response => {
                 const commentIndex = outputComments.findIndex(comment => comment.id === parseInt(commentId));
                 if (commentIndex !== -1) {
@@ -183,7 +183,7 @@ function MyVerticallyCenteredModal(props) {
                         return `
             <div class="comment-container">
               <div class="user-info">
-                <img src="https://2718425.un507148.web.hosting-test.net/storage/${avatar.avatar}" class="avatar" alt="${user.name}">
+                <img src="https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatar.avatar}" class="avatar" alt="${user.name}">
                 <p class="user-name">${user.name}</p>
                 <p class="comment-date">${formatDate(comment.created_at)}</p>
               </div>
@@ -238,7 +238,7 @@ function MyVerticallyCenteredModal(props) {
         if (removedUserIds.length > 0) {
             removedUserIds.forEach((removedUserId) => {
                 axios
-                    .post(`https://2718425.un507148.web.hosting-test.net/api/information-task?deleteId=${removedUserId.value}`)
+                    .post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/information-task?deleteId=${removedUserId.value}`)
                     .then((response) => {
                         const updatedArray = defaultValue.filter(
                             (defaultValue) => defaultValue.value !== removedUserId.value
@@ -274,7 +274,7 @@ function MyVerticallyCenteredModal(props) {
             formData.append("task_id", task.id);
 
             axios
-                .post("https://2718425.un507148.web.hosting-test.net/api/task-photo", formData)
+                .post("https://bvbvbvbvbudw-001-site1.atempurl.com/api/task-photo", formData)
                 .catch((error) => {
                     console.error(error);
                 });
@@ -285,7 +285,7 @@ function MyVerticallyCenteredModal(props) {
         const date = document.getElementById('date-information');
         const userIds = defaultValue.map((user) => user.value);
         axios
-            .post('https://2718425.un507148.web.hosting-test.net/api/information-task', {
+            .post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/information-task', {
                 task_id: task.id,
                 user_assigned: userIds,
                 deadline: date.value,
@@ -311,20 +311,20 @@ function MyVerticallyCenteredModal(props) {
                                     <button>...</button>
                                 </div>
                                 <div className="container-for-description">
-                                    <h6>Description</h6>
+                                    <h6>Опис</h6>
 
                                     <form action="" onSubmit={(e) => updateDescription(e, task.id)}>
                                         <input
                                             id="description-input"
                                             type="text"
-                                            placeholder="Add a description..."
+                                            placeholder="Додати опис до таску..."
                                             disabled={currentUserRole === 'teamworker'}
                                             readOnly={currentUserRole !== 'teamlead'}
                                             value={description}
                                             onChange={e => setDescription(e.target.value)}
                                         />
                                         {currentUserRole === 'teamlead' ? (
-                                            <button type="submit" className={'btn btn-primary'}>Send</button>
+                                            <button type="submit" className={'btn btn-primary'}>Відправити</button>
                                         ) : null}
                                     </form>
 
@@ -340,36 +340,36 @@ function MyVerticallyCenteredModal(props) {
                                     </div>
                                     <div>
                                         <select name="" id="" defaultValue={'newest'} onChange={handleSortChange}>
-                                            <option value="newest">newest first</option>
-                                            <option value="oldest">oldest</option>
-                                            <option value="longest">longest</option>
+                                            <option value="newest">Спочатку нові</option>
+                                            <option value="oldest">Спочатку старі</option>
+                                            <option value="longest">По довжині</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="create-comments">
                                     <img
-                                        src={foundUser ? `https://2718425.un507148.web.hosting-test.net/storage/${foundUser.avatar}` : null}
+                                        src={foundUser ? `https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${foundUser.avatar}` : null}
                                         className="avatar" alt='avatar'
                                     />
                                     <form action="" onSubmit={CreateCommentsHandler}>
-                                        <input type="text" placeholder='type new comment here...' id='comment-input'/>
+                                        <input type="text" placeholder='Введіть свій коментар...' id='comment-input'/>
                                         <button type='submit' className='send-comments-btn btn btn-primary'>
-                                            Send
+                                            Відправити
                                         </button>
                                     </form>
                                 </div>
                                 <div className="container-comments">
                                     {loading && <Loading display="visible"/>}
-                                    {outputComments.length === 0 ? "leave first comment" : ""}
+                                    {outputComments.length === 0 ? "Напишіть перший коментар" : ""}
                                     {outputComments.map(comment => {
                                         const user = users.find(user => user.id === comment.user_id);
-                                        const avatar = userAvatars.find(avatar => Number(avatar.user_id) === Number(comment.user_id));
+                                            const avatar = userAvatars.find(avatar => Number(avatar.user_id) === Number(comment.user_id));
                                         if (user && avatar) {
                                             return (
                                                 <div key={comment.id} className="comment-container">
                                                     <div className="user-info">
                                                         <img
-                                                            src={`https://2718425.un507148.web.hosting-test.net/storage/${avatar.avatar}`}
+                                                            src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatar.avatar}`}
                                                             className="avatar"
                                                             alt={user.name}
                                                         />
@@ -381,7 +381,7 @@ function MyVerticallyCenteredModal(props) {
                                                         {parseInt(currentUser) === user.id ? (
                                                             <>
                                                                 <button className="delete-button"
-                                                                        onClick={() => deleteCommentHandler(comment.id)}>Delete
+                                                                        onClick={() => deleteCommentHandler(comment.id)}>Видалити
                                                                 </button>
                                                             </>
                                                         ) : null}
@@ -398,13 +398,13 @@ function MyVerticallyCenteredModal(props) {
                                         { !isFullScreen && (
                                             <>
                                                 <img className="task-photo"
-                                                     src={`https://2718425.un507148.web.hosting-test.net/storage/${photoTask}`} alt=""
+                                                     src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${photoTask}`} alt=""
                                                      onClick={handleImageClick}/>
                                                 {currentUserRole === 'teamlead' ?
                                                     <div className="control-gallery">
                                                         <input type="file" onChange={handleFileChange}/>
-                                                        <button className={'btn btn-primary'}
-                                                                onClick={handleUpload}>Upload
+                                                        <button className={'btn btn-primary disabled'}
+                                                                onClick={handleUpload}>Завантажити
                                                         </button>
                                                     </div> : null
                                                 }
@@ -413,7 +413,7 @@ function MyVerticallyCenteredModal(props) {
                                         {isFullScreen && (
                                             <div className="fullscreen-overlay" onClick={handleFullScreenExit}>
                                                 <img className="fullscreen-image"
-                                                     src={`https://2718425.un507148.web.hosting-test.net/storage/${photoTask}`} alt=""/>
+                                                     src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${photoTask}`} alt=""/>
                                             </div>
                                         )}
                                     </div>
@@ -460,7 +460,7 @@ function MyVerticallyCenteredModal(props) {
                                                             className="user-select"
                                                         />
                                                         <p className="deadline-label">
-                                                            deadline:
+                                                            Дедлайн:
                                                             {currentUserRole === 'teamlead' ? (
                                                                 <input
                                                                     type="date"
@@ -482,7 +482,7 @@ function MyVerticallyCenteredModal(props) {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={props.onHide}>Close</Button>
+                        <Button onClick={props.onHide}>Закрити</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
@@ -503,7 +503,7 @@ function ButtonModal({tasks, buttonId, currentUserRole, foundUser, assignedUser}
     useEffect(() => {
         if (!isMounted.current) {
             axios
-                .get(`https://2718425.un507148.web.hosting-test.net/api/commenttaskuser`)
+                .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/commenttaskuser`)
                 .then(response => {
                     const responseData = response.data.response.data;
                     setComments(responseData.comments);
