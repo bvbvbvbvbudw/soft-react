@@ -34,7 +34,9 @@
     padding-bottom:30px;
 }
 .search-container-left{
-    display: flex; gap: 15px;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*gap: 15px;*/
 }
 .search-container-backlog input{
     border: 1px solid #dfe1e6;

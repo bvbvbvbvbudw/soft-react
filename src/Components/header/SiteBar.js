@@ -12,7 +12,7 @@
  import ProjectPages from '../../images/project-pages.png';
  import ShortCut from '../../images/shortcut.png';
  import Settings from '../../images/settings.png';
- 
+
 export default function SiteBar(){
 
     const [closedSiteBar, setClosedSiteBar] = useState(false);

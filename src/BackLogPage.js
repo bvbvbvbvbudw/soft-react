@@ -231,36 +231,40 @@ const BackLogPage = () => {
                                         </button>
                                     )}
                                 </div>
-                                <div className='images-users'>
-                                    {showAvatars.map(avatar => (<>
-                                        <div style={{display:"flex", flexDirection:"column"}}>
-                                            <img
-                                                key={avatar.user_id}
-                                                src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatar.avatar}`}
-                                                className="avatar"
-                                                alt="Avatar"
-                                                title={avatar.user.name}
-                                                onClick={
-                                                    currentUserRole === 'teamlead' ?
-                                                        () => {
-                                                            deleteUserHandler(avatar.user_id)
-                                                        } : null}
-                                            />
-                                            <p>{avatar.user.name}</p>
-                                        </div>
-                                    </>))}
-                                    {currentUserRole === 'teamlead' ?
-                                        <>
+                                    <div className='images-users'>
+                                        {showAvatars.map(avatar => (<>
+                                            <div style={{display:"flex", flexDirection:"column"}}>
+                                                <img
+                                                    key={avatar.user_id}
+                                                    src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatar.avatar}`}
+                                                    className="avatar"
+                                                    alt="Avatar"
+                                                    title={avatar.user.name}
+                                                    onClick={
+                                                        currentUserRole === 'teamlead' ?
+                                                            () => {
+                                                                deleteUserHandler(avatar.user_id)
+                                                            } : null}
+                                                />
+                                                <p>{avatar.user.name}</p>
+                                            </div>
+                                        </>))}
+                                        {currentUserRole === 'teamlead' ?
+                                            <>
                                                 <ModalWindowUser/>
-                                                <button className={'btn btn-primary'}
-                                                        onClick={() => editProjectHandler(projectId)}>Редагувати назву проекту
-                                                </button>
-                                                <button className={'btn btn-primary'}
-                                                        onClick={() => deleteProjectHandler(projectId)}>Видалити проект
-                                                </button>
-                                        </> : null
-                                    }
-                                </div>
+                                                <div className='wrapper-buttons-task'>
+                                                    <button className={'btn btn-primary button-control-task'}
+                                                            onClick={() => editProjectHandler(projectId)}>Редагувати назву проекту
+                                                    </button>
+                                                    <button className={'btn btn-primary button-control-task'}
+                                                            onClick={() => deleteProjectHandler(projectId)}>Видалити проект
+                                                    </button>
+                                                </div>
+                                            </> : null
+                                        }
+                                    </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -284,7 +288,6 @@ const BackLogPage = () => {
                                     </> : null
                                 }
                                 <button className='submit-btn btn btn-secondary disabled'>Завершити проект</button>
-                                <button className='more-btn'>...</button>
                             </div>
                         </div>
                         <div className="content-table">
