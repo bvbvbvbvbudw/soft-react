@@ -232,6 +232,7 @@
 @media screen and (max-width: 767px) {
     .button-control-task{
         width: 110px;
+        font-size: 10px;
     }
     .show-more{
         height: 30px;

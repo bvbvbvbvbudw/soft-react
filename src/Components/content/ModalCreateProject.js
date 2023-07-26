@@ -51,7 +51,7 @@ function ModalUser() {
 
     return (
         <>
-            <Button variant="primary" onClick={() => setModalShow(true)}>
+            <Button variant="primary" className='button-control-task' onClick={() => setModalShow(true)}>
                 Додати новий проект
             </Button>
 

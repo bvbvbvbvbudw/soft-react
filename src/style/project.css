@@ -98,7 +98,9 @@ thead{
         grid-template-rows: auto auto auto;
         padding: 20px;
     }
-
+    .project-page{
+        padding: 10px;
+    }
     .search select,
     .search-input {
         width: 100%;
