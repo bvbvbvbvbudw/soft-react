@@ -60,7 +60,7 @@ export default function Menu() {
                                 ) : (
                                     <>
                                         <div className='gap-5'>
-                                            <a className={'btn btn-primary'} href="/auth">Логін</a>
+                                            <a className={'btn btn-primary'} href="/auth">Увійти</a>
                                             <a className={'btn btn-primary'} href="/auth">Реєстрація</a>
                                         </div>
                                     </>

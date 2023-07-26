@@ -21,9 +21,15 @@ export default function Auth({setIsLoggedIn}) {
 
     const [error, setError] = useState();
     const [errorRegister, setErrorRegister] = useState();
+    const [itsError, setItsError] = useState(false)
 
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
+    const handlerTestAcc = () => {
+        setLoginEmail('admin@softui.com');
+        setLoginPassword('secret');
+    };
+
+    const handleLoginSubmit = (event) => {
+        event.preventDefault();
         if (loginEmail && loginPassword) {
             const userData = {
                 email: loginEmail,
@@ -78,6 +84,8 @@ export default function Auth({setIsLoggedIn}) {
             } catch (error) {
                 setErrorRegister(error.message)
                 console.error(error);
+                setItsError(true)
+
             }
         } else {
             setError('Будь ласка, заповніть всі форми які вище')
@@ -94,10 +102,10 @@ export default function Auth({setIsLoggedIn}) {
                         <div className="form-container">
                             <h1>Вход</h1>
                             <form onSubmit={handleLoginSubmit} onChange={() => setCorrectForms(false)}>
-                                <input type="email" placeholder="Пошта користувача" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} required autoComplete="username" />
-                                <input type="password" placeholder="Пароль" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} required autoComplete="current-password" />
-                                <button type="submit">Войти</button>
-                                {correctForms ? <p style={{color:'red', fontSize:'16px', fontWeight:'bold'}}>{error}</p> : null}
+                                <input id='email-log' type="email" placeholder="Пошта користувача" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} required autoComplete="username" />
+                                <input id='pass-log' type="password" placeholder="Пароль" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} required autoComplete="current-password" />
+                                <button type="submit">Увійти</button>
+                                {!correctForms ? <p style={{color:'red', fontSize:'16px', fontWeight:'bold'}}>{error}</p> : null}
                             </form>
                         </div>
                         <div className="form-container">
@@ -107,15 +115,18 @@ export default function Auth({setIsLoggedIn}) {
                                 <input type="email" placeholder="Email користувача" value={registerEmail} onChange={(e) => setRegisterEmail(e.target.value)} required autoComplete="username" />
                                 <input type="password" placeholder="Пароль" value={registerPassword} onChange={(e) => setRegisterPassword(e.target.value)} required autoComplete="new-password" />
                                 <button type="submit">
-                                    Зарегистрироваться
+                                    Зареєструватися
                                 </button>
                             </form>
                             {errorRegister === 'Registration successful' ?
                             <p style={{color:'green', fontSize:'16px', fontWeight:'bold'}}>{errorRegister},будь ласка, увійдіть в свій аккаунт</p> : null}
-                            {errorRegister !== 'Registration successful' ?
+                            {errorRegister !== 'Registration successful' && itsError ?
                             <p style={{color:'red', fontSize:'16px', fontWeight:'bold'}}>{errorRegister}, можливо, це помилка тому що, такий нік або пошта вже зайнята</p> : null}
-
                         </div>
+                    </div>
+                    <div className="container d-flex">
+                        <button onClick={handlerTestAcc}>Натисніть сюди, якщо хочете увійти в тестовий аккаунт</button>
+                        <p>Після натискання нажміть кнопку "Увійти"</p>
                     </div>
                 </Layout>
             </div>
