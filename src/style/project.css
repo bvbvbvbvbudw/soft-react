@@ -103,7 +103,7 @@ thead{
     }
     .search select,
     .search-input {
-        width: 100%;
+        width: auto;
     }
 
     .container-table th:nth-child(1),

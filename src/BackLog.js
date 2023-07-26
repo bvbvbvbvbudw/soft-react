@@ -1,9 +1,13 @@
+// import react and ..
 import React, {useEffect} from 'react';
+// import components
 import Layout from "./Layout/Layout";
 import SiteBar from "./Components/header/SiteBar";
-import './style/backlog.css';
 import withAuthentication from "./withAuthentication";
 import AccordionBacklog from "./Components/content/AccordionBacklog";
+// import styles
+import './style/backlog.css';
+
 
 function BackLog() {
     useEffect(() => {

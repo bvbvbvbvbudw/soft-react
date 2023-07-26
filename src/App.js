@@ -1,13 +1,20 @@
+// import routes and react
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// import components
 import Home from './Home';
+import Welcome from "./Welcome";
 import Project from './Project';
 import BackLog from './BackLog';
-import Board from './Board';
 import BackLogPage from './BackLogPage';
-import Auth from './Auth';
-import Welcome from "./Welcome";
+import Board from './Board';
 import MyProfile from "./MyProfile";
+import About from "./About";
+import Contact from "./Contact";
+import Feedback from './Feedback'
+import Auth from './Auth';
+
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
@@ -24,6 +31,9 @@ export default function App() {
                             <Route path="/backlog/:projectId" element={<BackLogPage />} />
                             <Route path="/board" element={<Board />} />
                             <Route path="/profile" element={<MyProfile />} />
+                            <Route path="/contacts" element={<Contact />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/support" element={<Feedback />} />
                         </>
                         <Route
                             path="/auth"

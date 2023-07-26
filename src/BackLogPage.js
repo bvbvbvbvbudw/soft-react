@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
-import './style/backlog.css';
 
 import Layout from "./Layout/Layout";
 import SiteBar from "./Components/header/SiteBar";
@@ -10,6 +9,8 @@ import ModalWindowUser from "./Components/content/ModalWindowUser";
 import ModalCreateTask from "./Components/content/ModalCreateTask";
 import withAuthentication from "./withAuthentication";
 import Loading from "./Components/Loading";
+
+import './style/backlog.css';
 
 const BackLogPage = () => {
     const navigate = useNavigate();
@@ -231,7 +232,7 @@ const BackLogPage = () => {
                                         </button>
                                     )}
                                 </div>
-                                    <div className='images-users'>
+                                    <div className='images-users' style={{marginTop:'20px'}}>
                                         {showAvatars.map(avatar => (<>
                                             <div style={{display:"flex", flexDirection:"column"}}>
                                                 <img
@@ -287,7 +288,7 @@ const BackLogPage = () => {
                                         <p className="count third" id="done">{valuesSelect.done}</p>
                                     </> : null
                                 }
-                                <button className='submit-btn btn btn-secondary disabled'>Завершити проект</button>
+                                <button className='submit-btn btn btn-secondary disabled' style={{fontSize:"10px", width:'120px'}}>Завершити проект</button>
                             </div>
                         </div>
                         <div className="content-table">
