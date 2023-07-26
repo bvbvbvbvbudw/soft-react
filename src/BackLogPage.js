@@ -112,31 +112,23 @@ const BackLogPage = () => {
                     ...prevState,
                     todo: prevState.todo !== null ? prevState.todo + 1 : 1
                 }));
+                console.log('3')
             } else if (select.value === '2') {
                 setValuesSelect(prevState => ({
                     ...prevState,
                     testing: prevState.testing !== null ? prevState.testing + 1 : 1
                 }));
+                console.log('2')
             } else {
                 setValuesSelect(prevState => ({
                     ...prevState,
                     done: prevState.done !== null ? prevState.done + 1 : 1
                 }));
+                console.log('1')
             }
         });
-        // updateValue()
         setFinishValuesUpdate(true);
-
     };
-    // const updateValue = () => {
-    //     const done = document.getElementById('done');
-    //     const testing = document.getElementById('testing');
-    //     const todo = document.getElementById('todo');
-    //
-    //     setValuesSelect.todo() !== null ? valuesSelect.todo : '0';
-    //     valuesSelect.testing !== null ? valuesSelect.testing : '0';
-    //     valuesSelect.done !== null ? valuesSelect.done : '0';
-    // };
 
     const deleteTaskHandler = (id) => {
         axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task?deleteId=${id}`)
@@ -282,7 +274,7 @@ const BackLogPage = () => {
                                 {currentUserRole === 'teamlead' ?
                                     <ModalCreateTask/> : null
                                 }
-                                {valuesSelect !== null && finishValuesUpdate ?
+                                {finishValuesUpdate ?
                                     <>
                                         <p className="count first" id="todo">{valuesSelect.todo}</p>
                                         <p className="count second" id="testing">{valuesSelect.testing}</p>
