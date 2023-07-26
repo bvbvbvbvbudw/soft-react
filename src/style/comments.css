@@ -217,7 +217,13 @@
     font-size: 14px;
     color: #333;
 }
-
+.show-more{
+    height: 30px;
+}
+.button-control-task{
+    height: 40px;
+    margin-top: 20px;
+}
 @media (max-width: 767px) {
     .user-select {
         width: 100%;
