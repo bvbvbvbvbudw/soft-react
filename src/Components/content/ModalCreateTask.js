@@ -55,7 +55,7 @@ function ModalTask() {
 
     return (
         <>
-            <Button variant="primary" className='button-control-task' style={{height:'20px', marginTop:'0px', verticalAlign:'center'}} onClick={() => setModalShow(true)}>
+            <Button variant="primary" className='button-control-task' style={{height:'30px', marginTop:'0px'}} onClick={() => setModalShow(true)}>
                 Додати завдання
             </Button>
 
