@@ -217,15 +217,19 @@
     font-size: 14px;
     color: #333;
 }
-.button-control-task{
-    width: 110px;
-}
+
 @media (max-width: 767px) {
     .user-select {
         width: 100%;
     }
 }
 @media screen and (max-width: 767px) {
+    .button-control-task{
+        width: 110px;
+    }
+    .show-more{
+        height: 30px;
+    }
     .maxSize{
         padding: 0;
         margin: 0;

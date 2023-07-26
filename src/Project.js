@@ -205,5 +205,4 @@ function Project() {
         </Layout>
     );
 }
-// export default Project
 export default withAuthentication(Project);

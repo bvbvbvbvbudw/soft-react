@@ -141,7 +141,7 @@
 .content-table-project{
     height: 33px;
     display: flex;
-    gap: 15px;
+    padding-bottom: 80px;
     border-bottom:1px solid #ebecf0;
     justify-content: space-between;
 }
@@ -228,7 +228,7 @@
     }
 
     .content-table-project {
-        height: 140px;
+        height: 70px;
         flex-direction: column;
     }
 

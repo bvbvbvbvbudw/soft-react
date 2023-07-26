@@ -526,7 +526,7 @@ function ButtonModal({tasks, buttonId, currentUserRole, foundUser, assignedUser}
     return (
         <>
             {showButton && (
-                <Button variant="primary" onClick={() => {
+                <Button variant="primary" className='show-more' onClick={() => {
                     setAvatarShow(true);
                     setModalShow(true);
                     setSendRequestModal(true)

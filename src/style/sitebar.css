@@ -6,7 +6,7 @@
     gap: 25px;
     transition-duration: 1s;
     position: absolute;
-    z-index: 9999;
+    z-index: 9;
 }
 .current-project{
     display: flex;
