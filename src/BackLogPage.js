@@ -27,6 +27,8 @@ const BackLogPage = () => {
     const [valuesSelect, setValuesSelect] = useState({
         todo: null, done: null, testing: null
     })
+    const [finishValuesUpdate, setFinishValuesUpdate] = useState(false);
+
     const choiseSelect = (event) => {
         const tables = document.querySelectorAll('.content-table-project');
         const paragraphs = document.querySelectorAll('.name-table');
@@ -50,7 +52,6 @@ const BackLogPage = () => {
             event.target.classList.add('active-third');
         }
     }
-
 
     useEffect(() => {
         const handleSitebarToggle = () => {
@@ -81,6 +82,7 @@ const BackLogPage = () => {
                 setCurrentUserRole(projectResponse.data.response.comments.roles[0].access_level);
                 setLoading(false);
                 formatTaskName(nameProject)
+                setFinishValuesUpdate(true);
                 handlerCount();
             } catch (error) {
                 console.error(error);
@@ -284,7 +286,7 @@ const BackLogPage = () => {
                                 {currentUserRole === 'teamlead' ?
                                     <ModalCreateTask/> : null
                                 }
-                                {valuesSelect !== null ?
+                                {valuesSelect !== null && finishValuesUpdate ?
                                     <>
                                         <p className="count first" id="todo">{valuesSelect.todo}</p>
                                         <p className="count second" id="testing">{valuesSelect.testing}</p>
