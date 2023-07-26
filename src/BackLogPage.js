@@ -108,17 +108,17 @@ const BackLogPage = () => {
         const selects = Array.from(document.querySelectorAll('.select-progress'));
         selects.forEach(select => {
             console.log(select)
-            if (select.value == 3) {
+            if (select.value === "3") {
                 setValuesSelect(prevState => ({
                     ...prevState,
                     todo: prevState.todo !== null ? prevState.todo + 1 : 1
                 }));
-            } else if (select.value == 2) {
+            } else if (select.value === "2") {
                 setValuesSelect(prevState => ({
                     ...prevState,
                     testing: prevState.testing !== null ? prevState.testing + 1 : 1
                 }));
-            } else {
+            } else if(select.value === "1") {
                 setValuesSelect(prevState => ({
                     ...prevState,
                     done: prevState.done !== null ? prevState.done + 1 : 1
