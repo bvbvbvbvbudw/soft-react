@@ -78,7 +78,6 @@ const BackLogPage = () => {
                     axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
                 ]);
                 setTasks(tasksResponse.data);
-                handlerCount();
                 setAvatars(projectResponse.data.response.comments.data);
                 setCurrentUserRole(projectResponse.data.response.comments.roles[0].access_level);
                 setLoading(false);
@@ -102,6 +101,14 @@ const BackLogPage = () => {
             })
             .catch(error => console.error(error));
     }, [avatars, setShowAvatars]);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            handlerCount();
+        }, 2000);
+
+        return () => clearTimeout(timeout);
+    }, []);
 
     const handlerCount = () => {
         console.log('start!')
