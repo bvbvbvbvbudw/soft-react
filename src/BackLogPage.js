@@ -11,6 +11,7 @@ import withAuthentication from "./withAuthentication";
 import Loading from "./Components/Loading";
 
 import './style/backlog.css';
+import doneIcon from './images/complete-project.png'
 
 const BackLogPage = () => {
     const navigate = useNavigate();
@@ -288,7 +289,8 @@ const BackLogPage = () => {
                                         <p className="count third" id="done">{valuesSelect.done}</p>
                                     </> : null
                                 }
-                                <button className='submit-btn btn btn-secondary disabled' style={{fontSize:"10px", width:'120px'}}>Завершити проект</button>
+                                <button className='submit-btn btn btn-secondary disabled complete-projects-btn' style={{fontSize:"10px", width:'120px'}}>Завершити проект</button>
+                                <img src={doneIcon} className='complete-projects-icon' alt="complete-projects"/>
                             </div>
                         </div>
                         <div className="content-table">

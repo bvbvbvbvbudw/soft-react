@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Logo from '../../images/Logo.png'
-import Icon from '../../images/img.png';
+import Icon from '../../images/icon-sitebar.png';
 
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.css';
