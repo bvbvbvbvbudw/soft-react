@@ -78,11 +78,12 @@ const BackLogPage = () => {
                     axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
                 ]);
                 setTasks(tasksResponse.data);
+                handlerCount();
+                console.log('hadnler must be work!')
                 setAvatars(projectResponse.data.response.comments.data);
                 setCurrentUserRole(projectResponse.data.response.comments.roles[0].access_level);
                 setLoading(false);
                 formatTaskName(nameProject)
-                handlerCount();
             } catch (error) {
                 console.error(error);
             }
