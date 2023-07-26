@@ -80,8 +80,8 @@ const BackLogPage = () => {
                 setAvatars(projectResponse.data.response.comments.data);
                 setCurrentUserRole(projectResponse.data.response.comments.roles[0].access_level);
                 setLoading(false);
-                handlerCount();
                 formatTaskName(nameProject)
+                handlerCount();
             } catch (error) {
                 console.error(error);
             }
@@ -129,7 +129,10 @@ const BackLogPage = () => {
         const done = document.getElementById('done');
         const testing = document.getElementById('testing');
         const todo = document.getElementById('todo');
-
+        console.log(done)
+        console.log(testing)
+        console.log(todo)
+        console.log(valuesSelect)
         todo.innerText = valuesSelect.todo !== null ? valuesSelect.todo : '0';
         testing.innerText = valuesSelect.testing !== null ? valuesSelect.testing : '0';
         done.innerText = valuesSelect.done !== null ? valuesSelect.done : '0';
