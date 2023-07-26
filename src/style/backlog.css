@@ -198,6 +198,10 @@
 .complete-projects-btn-down{
     display: none;
 }
+.wrapper-buttons-task{
+    display: flex;
+    gap: 7px;
+}
 @media (max-width: 767px) {
     .container-backlog {
         padding: 15px;

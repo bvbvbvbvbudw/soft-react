@@ -11,7 +11,6 @@ import withAuthentication from "./withAuthentication";
 import Loading from "./Components/Loading";
 
 import './style/backlog.css';
-import doneIcon from './images/complete-project.png'
 
 const BackLogPage = () => {
     const navigate = useNavigate();

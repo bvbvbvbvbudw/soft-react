@@ -40,7 +40,7 @@ export default function Menu() {
 
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand href="#home"><img src={Icon} onClick={() => setClosedSiteBar(!closedSiteBar)} style={{ width: 24, height: 24, marginLeft: 30 }} alt='icon' /> <img className='logo' src={Logo} alt=""/></Navbar.Brand>
+                    <Navbar.Brand href=""><img src={Icon} onClick={() => setClosedSiteBar(!closedSiteBar)} style={{ width: 45, height: 24, marginLeft: 30 }} alt='icon' /> <img className='logo' src={Logo} alt=""/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
