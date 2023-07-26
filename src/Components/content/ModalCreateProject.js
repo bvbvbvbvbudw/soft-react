@@ -34,7 +34,7 @@ function MyVerticallyCenteredModal(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <form action="" onSubmit={sendRequest}>
-                        <input type="text" id='response-create-project' placeholder='Введіть назву'/>
+                        <input type="text" id='response-create-project' placeholder='Введіть назву' autocomplete="off"/>
                         <button type='submit' className='btn btn-primary'>Додати</button>
                     </form>
                 </Modal.Body>

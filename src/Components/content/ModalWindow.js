@@ -297,7 +297,7 @@ function MyVerticallyCenteredModal(props) {
     };
     return (
         <>
-            <div className="modal-window">
+            <div className="modal-window modal-window-big">
                 <Modal {...rest} size="xl h-75" aria-labelledby="contained-modal-title-vcenter" centered
                        animation={false}>
                     <Modal.Body>
@@ -352,7 +352,7 @@ function MyVerticallyCenteredModal(props) {
                                         className="avatar" alt='avatar'
                                     />
                                     <form action="" onSubmit={CreateCommentsHandler}>
-                                        <input type="text" placeholder='Введіть свій коментар...' id='comment-input'/>
+                                        <input type="text" placeholder='Введіть свій коментар...' id='comment-input' autocomplete="off"/>
                                         <button type='submit' className='send-comments-btn btn btn-primary'>
                                             Відправити
                                         </button>
