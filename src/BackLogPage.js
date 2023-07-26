@@ -82,7 +82,6 @@ const BackLogPage = () => {
                 setCurrentUserRole(projectResponse.data.response.comments.roles[0].access_level);
                 setLoading(false);
                 formatTaskName(nameProject)
-                setFinishValuesUpdate(true);
                 handlerCount();
             } catch (error) {
                 console.error(error);
@@ -125,20 +124,19 @@ const BackLogPage = () => {
                 }));
             }
         });
-        updateValue()
+        // updateValue()
+        setFinishValuesUpdate(true);
+
     };
-    const updateValue = () => {
-        const done = document.getElementById('done');
-        const testing = document.getElementById('testing');
-        const todo = document.getElementById('todo');
-        console.log(done)
-        console.log(testing)
-        console.log(todo)
-        console.log(valuesSelect)
-        todo.innerText = valuesSelect.todo !== null ? valuesSelect.todo : '0';
-        testing.innerText = valuesSelect.testing !== null ? valuesSelect.testing : '0';
-        done.innerText = valuesSelect.done !== null ? valuesSelect.done : '0';
-    };
+    // const updateValue = () => {
+    //     const done = document.getElementById('done');
+    //     const testing = document.getElementById('testing');
+    //     const todo = document.getElementById('todo');
+    //
+    //     setValuesSelect.todo() !== null ? valuesSelect.todo : '0';
+    //     valuesSelect.testing !== null ? valuesSelect.testing : '0';
+    //     valuesSelect.done !== null ? valuesSelect.done : '0';
+    // };
 
     const deleteTaskHandler = (id) => {
         axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task?deleteId=${id}`)
@@ -269,8 +267,6 @@ const BackLogPage = () => {
                                             </> : null
                                         }
                                     </div>
-
-
                             </div>
                         </div>
                     </div>
