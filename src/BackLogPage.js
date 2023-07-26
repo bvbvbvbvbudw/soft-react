@@ -24,10 +24,10 @@ const BackLogPage = () => {
     const [currentUserRole, setCurrentUserRole] = useState();
     const [foundUser, setFoundUser] = useState();
     const [loading, setLoading] = useState(true);
+    const [finishValuesUpdate, setFinishValuesUpdate] = useState(false);
     const [valuesSelect, setValuesSelect] = useState({
         todo: null, done: null, testing: null
     })
-    const [finishValuesUpdate, setFinishValuesUpdate] = useState(false);
 
     const choiseSelect = (event) => {
         const tables = document.querySelectorAll('.content-table-project');
@@ -101,7 +101,6 @@ const BackLogPage = () => {
             })
             .catch(error => console.error(error));
     }, [avatars, setShowAvatars]);
-
     useEffect(() => {
         const timeout = setTimeout(() => {
             handlerCount();
@@ -111,24 +110,18 @@ const BackLogPage = () => {
     }, []);
 
     const handlerCount = () => {
-        console.log('start!')
         const selects = Array.from(document.querySelectorAll('.select-progress'));
         const updatedValues = { todo: 0, testing: 0, done: 0 };
 
         selects.forEach(select => {
-            console.log('foreach!')
             if (select.value === "3") {
                 updatedValues.todo++;
-                console.log('3')
             } else if (select.value === "2") {
-                console.log('2')
                 updatedValues.testing++;
             } else if (select.value === "1") {
-                console.log('1')
                 updatedValues.done++;
             }
         });
-
         setValuesSelect(updatedValues);
         setFinishValuesUpdate(true);
     };
