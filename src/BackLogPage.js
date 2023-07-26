@@ -290,7 +290,6 @@ const BackLogPage = () => {
                                     </> : null
                                 }
                                 <button className='submit-btn btn btn-secondary disabled complete-projects-btn' style={{fontSize:"10px", width:'120px'}}>Завершити проект</button>
-                                <img src={doneIcon} className='complete-projects-icon' alt="complete-projects"/>
                             </div>
                         </div>
                         <div className="content-table">
@@ -340,6 +339,7 @@ const BackLogPage = () => {
                                 <p>Не знайдено завдань.</p>
                             )}
                         </div>
+                        <button className='submit-btn btn btn-secondary disabled complete-projects-btn-down' style={{fontSize:"10px", width:'120px'}}>Завершити проект</button>
                     </div>
                 </div>
             </Layout>
