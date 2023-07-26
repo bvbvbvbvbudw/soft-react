@@ -104,15 +104,20 @@ const BackLogPage = () => {
     }, [avatars, setShowAvatars]);
 
     const handlerCount = () => {
+        console.log('start!')
         const selects = Array.from(document.querySelectorAll('.select-progress'));
         const updatedValues = { todo: 0, testing: 0, done: 0 };
 
         selects.forEach(select => {
+            console.log('foreach!')
             if (select.value === "3") {
                 updatedValues.todo++;
+                console.log('3')
             } else if (select.value === "2") {
+                console.log('2')
                 updatedValues.testing++;
             } else if (select.value === "1") {
+                console.log('1')
                 updatedValues.done++;
             }
         });
