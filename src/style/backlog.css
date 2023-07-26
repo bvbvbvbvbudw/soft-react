@@ -141,7 +141,6 @@
 .content-table-project{
     height: 33px;
     display: flex;
-    padding-bottom: 80px;
     border-bottom:1px solid #ebecf0;
     justify-content: space-between;
 }
@@ -200,7 +199,9 @@
     .container-backlog {
         padding: 15px;
     }
-
+    .content-table-project{
+        padding-bottom: 80px;
+    }
     .breadcrumb-title {
         font-size: 14px;
     }

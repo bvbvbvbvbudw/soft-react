@@ -44,6 +44,7 @@ function BackLog() {
                     </div>
                 </div>
                 <div className="container-backlog-accordion">
+                    <h6>Тут будуть відображатися завдання на які ви призначені</h6>
                     <div className="content-table">
                         <AccordionBacklog/>
                     </div>

@@ -301,7 +301,6 @@ const BackLogPage = () => {
                                     return (
                                         <div className={`content-table-project ${hideClass}`} key={task.id}>
                                             <div className="left-side-content">
-                                                <input type="checkbox" />
                                                 <p className={`name-table ${task.status_id.toString() === '1' ? 'done-work' : ''}`} id="name-table" key={task.id}>
                                                     {nameProject}-{index + 1}
                                                 </p>
