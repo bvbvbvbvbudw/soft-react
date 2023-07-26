@@ -211,7 +211,7 @@ const BackLogPage = () => {
                         <div className="breadcrumb-container">
                             <div className="breadcrumb-title">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="/projects">Projects</a></li>
+                                    <li className="breadcrumb-item"><a href="/project">Projects</a></li>
                                     <li className="breadcrumb-item active" aria-current="page">tasks</li>
                                 </ol>
                                 <p className='title-backlog'>{localStorage.getItem('currentProject').charAt(0).toUpperCase() + localStorage.getItem('currentProject').slice(1)} проект</p>
