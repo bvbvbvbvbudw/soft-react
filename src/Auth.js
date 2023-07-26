@@ -111,9 +111,10 @@ export default function Auth({setIsLoggedIn}) {
                                 </button>
                             </form>
                             {errorRegister === 'Registration successful' ?
-                            <p style={{color:'green', fontSize:'16px', fontWeight:'bold'}}>{errorRegister},будь ласка, увійдіть в свій аккаунт</p> :
-                            <p style={{color:'red', fontSize:'16px', fontWeight:'bold'}}>{errorRegister}, можливо, це помилка тому що, такий нік або пошта вже зайнята</p>
-                            }
+                            <p style={{color:'green', fontSize:'16px', fontWeight:'bold'}}>{errorRegister},будь ласка, увійдіть в свій аккаунт</p> : null}
+                            {errorRegister !== 'Registration successful' ?
+                            <p style={{color:'red', fontSize:'16px', fontWeight:'bold'}}>{errorRegister}, можливо, це помилка тому що, такий нік або пошта вже зайнята</p> : null}
+
                         </div>
                     </div>
                 </Layout>
