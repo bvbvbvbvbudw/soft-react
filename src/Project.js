@@ -18,8 +18,8 @@ function Project() {
         const fetchData = async () => {
             try {
                 const [projectsResponse, usersResponse] = await Promise.all([
-                    axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects?user_id=${localStorage.getItem('userName')}`),
-                    axios.get('https://bvbvbvbvbudw-001-site1.atempurl.com/api/users')
+                    axios.get(`http://127.0.0.1:8000/api/projects?user_id=${localStorage.getItem('userName')}`),
+                    axios.get('http://127.0.0.1:8000/api/users')
                 ]);
                 const projects = projectsResponse.data.response.tasks.data;
                 const users = usersResponse.data.response.users.data;
@@ -51,7 +51,7 @@ function Project() {
 
         const startLoadingAvatar = async avatarsUser => {
             const avatarPromises = avatarsUser.map(avatar =>
-                axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${avatar}`)
+                axios.get(`http://127.0.0.1:8000/api/avatarLoad?user_id=${avatar}`)
             );
 
             try {
@@ -91,13 +91,13 @@ function Project() {
 
         if (isFavorite) {
             star.classList.remove('on-star');
-            await axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/favorite`, {
+            await axios.post(`http://127.0.0.1:8000/api/favorite`, {
                 user_id: localStorage.getItem('userName'),
                 project_id: project
             });
         } else {
             star.classList.add('on-star');
-            await axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/favorite`, {
+            await axios.post(`http://127.0.0.1:8000/api/favorite`, {
                 user_id: localStorage.getItem('userName'),
                 project_id: project
             });
@@ -110,7 +110,7 @@ function Project() {
     const isProjectFavorite = async (projectId) => {
         try {
             const response = await axios.get(
-                `https://bvbvbvbvbudw-001-site1.atempurl.com/api/favorite/toggle?user_id=${localStorage.getItem('userName')}&project_id=${projectId}`
+                `http://127.0.0.1:8000/api/favorite/toggle?user_id=${localStorage.getItem('userName')}&project_id=${projectId}`
             );
             return response.data.favoriteExists;
         } catch (error) {
@@ -183,7 +183,7 @@ function Project() {
                                     <a href="/">
                                         {avatarUrl.find(avatar => parseInt(avatar.user_id) === parseInt(project.creator_id)) && (
                                             <img
-                                                src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatarUrl.find(
+                                                src={`http://127.0.0.1:8000/storage/${avatarUrl.find(
                                                     avatar => parseInt(avatar.user_id) === parseInt(project.creator_id)
                                                 ).avatar}`}
                                                 className={'avatar'}

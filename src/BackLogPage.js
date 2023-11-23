@@ -10,11 +10,16 @@ import ModalCreateTask from "./Components/content/ModalCreateTask";
 import withAuthentication from "./withAuthentication";
 import Loading from "./Components/Loading";
 
+import avatarDefault from './images/avatar/default.svg';
+
 import './style/backlog.css';
 
 const BackLogPage = () => {
     const navigate = useNavigate();
     const {projectId} = useParams();
+
+    const [comments, setComments] = useState([]);
+
     const [tasks, setTasks] = useState([]);
     const [avatars, setAvatars] = useState([])
     const [showAvatars, setShowAvatars] = useState([]);
@@ -74,23 +79,44 @@ const BackLogPage = () => {
         const fetchInitialData = async () => {
             try {
                 const [tasksResponse, projectResponse] = await axios.all([
-                    axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/currentTask?project_id=${projectId}`),
-                    axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
+                    axios.get(`http://127.0.0.1:8000/api/currentTask?project_id=${projectId}`),
+                    axios.get(`http://127.0.0.1:8000/api/projectadduser?project_id=${projectId}&user_id=${encodeURIComponent(localStorage.getItem('userName'))}`)
                 ]);
-                setTasks(tasksResponse.data);
+
+                // Set tasks first
+                setTasks(tasksResponse.data.response.tasks.data);
+                setTimeout(() => {
+                    handlerCount();
+
+                },100)
+
+                // Use the updated tasks state
+                const updatedTasks = tasksResponse.data.response.tasks.data;
+
+                // Use a Promise to ensure setComments is called after setTasks
+                await new Promise(resolve => setTimeout(resolve, 0));
+
+                // Update comments based on the updated tasks state
+                updatedTasks.forEach(task => {
+                    setComments(prevComments => prevComments.concat({ id: task.id, comments: task.comments }));
+                });
+
+                // Set other state values
                 setAvatars(projectResponse.data.response.comments.data);
                 setCurrentUserRole(projectResponse.data.response.comments.roles[0].access_level);
                 setLoading(false);
-                formatTaskName(nameProject)
+                formatTaskName(nameProject);
             } catch (error) {
                 console.error(error);
             }
         };
+
         fetchInitialData();
     }, []);
+
     useEffect(() => {
         Promise.all(avatars.map(avatar => {
-            return axios.get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${avatar.id}`);
+            return axios.get(`http://127.0.0.1:8000/api/avatarLoad?user_id=${avatar.id}`);
         }))
             .then(responses => {
                 const avatarsData = responses.map(response => response.data);
@@ -101,13 +127,13 @@ const BackLogPage = () => {
             })
             .catch(error => console.error(error));
     }, [avatars, setShowAvatars]);
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            handlerCount();
-        }, 2000);
-
-        return () => clearTimeout(timeout);
-    }, []);
+    // useEffect(() => {
+    //     const timeout = setTimeout(() => {
+    //         handlerCount();
+    //     }, 1000);
+    //
+    //     return () => clearTimeout(timeout);
+    // }, []);
 
     const handlerCount = () => {
         const selects = Array.from(document.querySelectorAll('.select-progress'));
@@ -127,14 +153,14 @@ const BackLogPage = () => {
     };
 
     const deleteTaskHandler = (id) => {
-        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task?deleteId=${id}`)
+        axios.post(`http://127.0.0.1:8000/api/task?deleteId=${id}`)
             .then(response => {
                 setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
             })
             .catch(error => console.error(error));
     }
     const deleteProjectHandler = (project) => {
-        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects?deleteId=${project}`).then(response => navigate('/project'))
+        axios.post(`http://127.0.0.1:8000/api/projects?deleteId=${project}`).then(response => navigate('/project'))
     }
     const editProjectHandler = () => {
         const nameElement = document.getElementById('currentProject');
@@ -148,7 +174,7 @@ const BackLogPage = () => {
             this.parentNode.replaceChild(nameElement, this);
 
             axios
-                .post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects?id=${projectId}`, {
+                .post(`http://127.0.0.1:8000/api/projects?id=${projectId}`, {
                     project: updatedName,
                     creator_id: encodeURIComponent(localStorage.getItem('userName'))
                 })
@@ -165,7 +191,7 @@ const BackLogPage = () => {
 
     const deleteUserHandler = (id) => {
         console.log(id)
-        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser?deleteId=${id}&project_id=${projectId}`)
+        axios.post(`http://127.0.0.1:8000/api/projectadduser?deleteId=${id}&project_id=${projectId}`)
             .then(response =>
                 window.location.reload()
             )
@@ -175,7 +201,7 @@ const BackLogPage = () => {
     }
     const handleChangeTaskInfo = (task, e) => {
         const selectValue = e.target.value;
-        axios.post(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/task?id=${task.id}`, {
+        axios.post(`http://127.0.0.1:8000/api/task?id=${task.id}`, {
             name: task.name,
             user_id: task.user_id,
             status_id: selectValue,
@@ -192,7 +218,6 @@ const BackLogPage = () => {
             setNameProject(words.map(word => word.charAt(0).toUpperCase()).join(''))
         }
     }
-
     return (
         <>
             <Layout>
@@ -224,23 +249,25 @@ const BackLogPage = () => {
                                     )}
                                 </div>
                                     <div className='images-users' style={{marginTop:'20px'}}>
-                                        {showAvatars.map(avatar => (<>
-                                            <div style={{display:"flex", flexDirection:"column"}}>
+                                        {showAvatars.map((avatar, index) => (
+                                            <div key={index} style={{ display: "flex", flexDirection: "column" }}>
                                                 <img
-                                                    key={avatar.user_id}
-                                                    src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatar.avatar}`}
+                                                    src={avatar.avatar ? `http://127.0.0.1:8000/storage/${avatar.avatar}` : avatarDefault}
                                                     className="avatar"
                                                     alt="Avatar"
                                                     title={avatar.user.name}
                                                     onClick={
-                                                        currentUserRole === 'teamlead' ?
-                                                            () => {
-                                                                deleteUserHandler(avatar.user_id)
-                                                            } : null}
+                                                        currentUserRole === 'teamlead'
+                                                            ? () => {
+                                                                deleteUserHandler(avatar.user_id);
+                                                            }
+                                                            : null
+                                                    }
                                                 />
                                                 <p>{avatar.user.name}</p>
                                             </div>
-                                        </>))}
+                                        ))}
+
                                         {currentUserRole === 'teamlead' ?
                                             <>
                                                 <ModalWindowUser/>
@@ -268,7 +295,7 @@ const BackLogPage = () => {
                             </div>
                             <div className="right-side-information">
                                 {currentUserRole === 'teamlead' ?
-                                    <ModalCreateTask/> : null
+                                    <ModalCreateTask setTasks={setTasks}/> : null
                                 }
                                 {finishValuesUpdate ?
                                     <>
@@ -282,50 +309,60 @@ const BackLogPage = () => {
                         </div>
                         <div className="content-table">
                             {loading && <Loading display="visible" />}
-                            {tasks.length > 0 ? (
-                                tasks.map((task, index) => {
-                                    const taskAvatar = showAvatars.find(avatar => avatar.user_id === task.user_id.toString());
-                                    const avatarSrc = taskAvatar ? `https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${taskAvatar.avatar}` : '';
-                                    const hideClass = searchQuery && !task.name.toLowerCase().includes(searchQuery.toLowerCase()) ? 'hide' : '';
+                            {tasks ?
+                                tasks.length > 0 ? (
+                                    tasks.map((task, index) => {
+                                        const hideClass = searchQuery && !task.name.toLowerCase().includes(searchQuery.toLowerCase()) ? 'hide' : '';
+                                        return (
+                                            <div className={`content-table-project ${hideClass}`} key={task.id}>
+                                                <div className="left-side-content">
+                                                    <p className={`name-table ${task.status_id.toString() === '1' ? 'done-work' : ''}`} id="name-table" key={task.id}>
+                                                        {nameProject}-{index + 1}
+                                                    </p>
+                                                    <p className="description-table">{task.name}</p>
+                                                </div>
+                                                <div className="right-side-content">
+                                                    {currentUserRole === 'teamlead' ? (
+                                                        <button className="delete-content" onClick={() => deleteTaskHandler(task.id)}>
+                                                            -
+                                                        </button>
+                                                    ) : null}
+                                                    <ModalWindow
+                                                        comments={task.comments}
+                                                        informationTask={task.informationTask}
+                                                        photoTask={task.photo.length !== 0 ? task.photo[0].photo : null}
+                                                        description={task.description.length !== 0? task.description[0].description : null}
+                                                        task={task}
+                                                        taskId={task.id}
+                                                        currentUserRole={currentUserRole}
+                                                        foundUser={foundUser}
+                                                        assignedUser={assignedUser}
+                                                    />
+                                                    <select
+                                                        name=""
+                                                        id="selection-work-progress"
+                                                        className={`select-progress ${task.status_id === 1 ? 'active-first' : '' || task.status_id === 2 ? 'active-second' : '' || task.status_id === 3 ? 'active-third' : ''}`}
+                                                        onChange={e => {
+                                                            handleChangeTaskInfo(task, e);
+                                                            handlerCount();
+                                                        }}
+                                                        onClick={choiseSelect}
+                                                        defaultValue={task.status_id.toString()}
+                                                    >
+                                                        <option value="1">Зроблено</option>
+                                                        <option value="2">Тестування</option>
+                                                        <option value="3">В роботі</option>
+                                                    </select>
+                                                    <img src={task.user.avatar.avatar ? `http://127.0.0.1:8000/storage/${task.user.avatar.avatar}` : avatarDefault} className="avatar" alt="Avatar" />
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <p>Не знайдено завдань.</p>
+                                )
+                                : null }
 
-                                    return (
-                                        <div className={`content-table-project ${hideClass}`} key={task.id}>
-                                            <div className="left-side-content">
-                                                <p className={`name-table ${task.status_id.toString() === '1' ? 'done-work' : ''}`} id="name-table" key={task.id}>
-                                                    {nameProject}-{index + 1}
-                                                </p>
-                                                <p className="description-table">{task.name}</p>
-                                            </div>
-                                            <div className="right-side-content">
-                                                {currentUserRole === 'teamlead' ? (
-                                                    <button className="delete-content" onClick={() => deleteTaskHandler(task.id)}>
-                                                        -
-                                                    </button>
-                                                ) : null}
-                                                <ModalWindow tasks={tasks} taskId={task.id} currentUserRole={currentUserRole} foundUser={foundUser} assignedUser={assignedUser} />
-                                                <select
-                                                    name=""
-                                                    id="selection-work-progress"
-                                                    className={`select-progress ${task.status_id === 1 ? 'active-first' : '' || task.status_id === 2 ? 'active-second' : '' || task.status_id === 3 ? 'active-third' : ''}`}
-                                                    onChange={e => {
-                                                        handleChangeTaskInfo(task, e);
-                                                        handlerCount();
-                                                    }}
-                                                    onClick={choiseSelect}
-                                                    defaultValue={task.status_id.toString()}
-                                                >
-                                                    <option value="1">Зроблено</option>
-                                                    <option value="2">Тестування</option>
-                                                    <option value="3">В роботі</option>
-                                                </select>
-                                                <img key={taskAvatar ? taskAvatar.user_id : 'default'} src={avatarSrc} className="avatar" alt="Avatar" />
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <p>Не знайдено завдань.</p>
-                            )}
                         </div>
                         <button className='submit-btn btn btn-secondary disabled complete-projects-btn-down' style={{fontSize:"10px", width:'120px'}}>Завершити проект</button>
                     </div>

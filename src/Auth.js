@@ -36,7 +36,7 @@ export default function Auth({setIsLoggedIn}) {
                 password: loginPassword
             };
 
-            axios.post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/login', userData)
+            axios.post('http://127.0.0.1:8000/api/login', userData)
                 .then(response => {
                     localStorage.setItem('userName', response.data.name)
                     const token = response.data.token;
@@ -67,7 +67,7 @@ export default function Auth({setIsLoggedIn}) {
                     password: registerPassword,
                 };
 
-                const response = await axios.get('https://bvbvbvbvbudw-001-site1.atempurl.com/api/csrf-cookie');
+                const response = await axios.get('http://127.0.0.1:8000/api/csrf-cookie');
 
                 if (response.status === 200) {
                     const config = {
@@ -77,7 +77,7 @@ export default function Auth({setIsLoggedIn}) {
                         }
                     };
 
-                    const registerResponse = await axios.post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/register', userData, config);
+                    const registerResponse = await axios.post('http://127.0.0.1:8000/api/register', userData, config);
                     console.log(registerResponse.data);
                     setErrorRegister(registerResponse.data.message);
                 }

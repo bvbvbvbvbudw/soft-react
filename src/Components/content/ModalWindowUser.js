@@ -12,12 +12,12 @@ function MyVerticallyCenteredModal(props) {
         const inputReq = document.getElementById('req')
         e.preventDefault();
         axios
-            .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/findUser?name=${inputReq.value}`)
+            .get(`http://127.0.0.1:8000/api/findUser?name=${inputReq.value}`)
             .then(response => {
                 setAddUser(response.data);
                 setTimeout(() => {
                     axios
-                        .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${response.data[0].id}`)
+                        .get(`http://127.0.0.1:8000/api/avatarLoad?user_id=${response.data[0].id}`)
                         .then(response => {
                             setUserAvatar(response.data.avatar)
                         })
@@ -30,7 +30,7 @@ function MyVerticallyCenteredModal(props) {
     const addUserHandler = (id) => {
         const select = document.getElementById('choice-member')
         axios
-            .post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/projectadduser',
+            .post('http://127.0.0.1:8000/api/projectadduser',
                 {
                 project_id: projectId ,
                 user_id: id,
@@ -53,7 +53,7 @@ function MyVerticallyCenteredModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <form action="" onSubmit={sendRequest}>
-                    <input type="text" id='req' placeholder='Введіть нік користувача' autocomplete="off"/>
+                    <input type="text" id='req' placeholder='Введіть нік користувача' autoComplete="off"/>
                     <button type='submit'>Шукати</button>
                 </form>
 
@@ -61,7 +61,7 @@ function MyVerticallyCenteredModal(props) {
                     {addUsers.map(user => (
                         <div key={user.id} style={{display:'flex'}}>
                             <img
-                                src={`https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${userAvatar}`}
+                                src={`http://127.0.0.1:8000/storage/${userAvatar}`}
                                 className="avatar"
                                 alt={user.name}
                             />

@@ -43,30 +43,29 @@ export default function Menu() {
                     <Navbar.Brand href=""><img src={Icon} onClick={() => setClosedSiteBar(!closedSiteBar)} style={{ width: 45, height: 24, marginLeft: 30 }} alt='icon' /> <img className='logo' src={Logo} alt=""/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="me-auto w-100">
                             <Nav.Link href='/' id="basic-nav-dropdown-1">Головна</Nav.Link>
                             <Nav.Link href='/contacts' id="basic-nav-dropdown-1">Наші контакти</Nav.Link>
                             <Nav.Link href='/about' id="basic-nav-dropdown-1">Про нас</Nav.Link>
                             <Nav.Link href='/support' id="basic-nav-dropdown-1">Для пропозицій та ідей</Nav.Link>
-
-                            {token ?
-                                token.length > 30 ? (
-                                    <>
-                                        <div className='gap-5'>
-                                            <a className={'btn btn-primary'} href="/profile">Мій профіль</a>
-                                            <button onClick={handleLogout} className={'btn btn-primary'}>Вийти з аккаунту</button>
-                                        </div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className='gap-5'>
-                                            <a className={'btn btn-primary'} href="/auth">Увійти</a>
-                                            <a className={'btn btn-primary'} href="/auth">Реєстрація</a>
-                                        </div>
-                                    </>
-                                )
-                                : "error"}
                         </Nav>
+                        {token ?
+                            token.length > 30 ? (
+                                <>
+                                    <div className='d-flex gap-5 w-50'>
+                                        <a className={'btn btn-primary'} href="/profile">Мій профіль</a>
+                                        <button onClick={handleLogout} className={'btn btn-primary'}>Вийти з аккаунту</button>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className='d-flex gap-5 w-50'>
+                                        <a className={'btn btn-primary'} href="/auth">Увійти</a>
+                                        <a className={'btn btn-primary'} href="/auth">Реєстрація</a>
+                                    </div>
+                                </>
+                            )
+                            : "error"}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

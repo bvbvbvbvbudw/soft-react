@@ -9,7 +9,7 @@ function MyVerticallyCenteredModal(props) {
         e.preventDefault()
         console.log(inputReq.value);
         axios
-            .post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/projects', {
+            .post('http://127.0.0.1:8000/api/projects', {
                 project: inputReq.value,
                 creator_id: localStorage.getItem('userName')
             })
@@ -34,7 +34,7 @@ function MyVerticallyCenteredModal(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <form action="" onSubmit={sendRequest}>
-                        <input type="text" id='response-create-project' placeholder='Введіть назву' autocomplete="off"/>
+                        <input type="text" id='response-create-project' placeholder='Введіть назву' autoComplete="off"/>
                         <button type='submit' className='btn btn-primary'>Додати</button>
                     </form>
                 </Modal.Body>

@@ -15,7 +15,7 @@ export default function AvatarUpload() {
         formData.append('avatar', selectedFile);
         formData.append('user_id', currentUser);
         axios
-            .post('https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatar', formData)
+            .post('http://127.0.0.1:8000/api/avatar', formData)
             .then((response) => {
                 console.log(response);
             })
@@ -37,7 +37,7 @@ export default function AvatarUpload() {
     return (
         <>
             <input type="file" onChange={handleFileChange}/>
-            <button onClick={handleUpload} className='btn btn-primary disabled'>Upload</button>
+            <button onClick={handleUpload} className='btn btn-primary'>Upload</button>
         </>
     );
 }

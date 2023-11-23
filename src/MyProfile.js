@@ -13,11 +13,11 @@ function MyProfile() {
 
     useEffect(() => {
         axios
-            .get(`https://bvbvbvbvbudw-001-site1.atempurl.com/api/avatarLoad?user_id=${localStorage.getItem('userName')}`)
+            .get(`http://127.0.0.1:8000/api/avatarLoad?user_id=${localStorage.getItem('userName')}`)
             .then(response => {
                 setUserName(response.data.user.name);
                 const avatarFileName = response.data.avatar;
-                const fullAvatarUrl = `https://bvbvbvbvbudw-001-site1.atempurl.com/storage/${avatarFileName}`;
+                const fullAvatarUrl = `http://127.0.0.1:8000/storage/${avatarFileName}`;
                 setAvatarUrl(fullAvatarUrl);
             })
             .catch(error => {
